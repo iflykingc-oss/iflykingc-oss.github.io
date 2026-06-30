@@ -83,11 +83,11 @@ function renderThinking(lang) {
   `).join('');
 }
 
-// Highlight project names + numbers in body (bold)
+// Highlight real names + percentages in body (bold)
 function highlight(s) {
   return escapeHTML(s)
-    .replace(/\b(BuddyJob|AIkefu|DataInsight|LifeChart|SalesCoach|AI Radar|ShiftSmart|玄机子)\b/g, '<strong>$1</strong>')
-    .replace(/\b(\d+%|\d+x|~?70%|40%)\b/g, '<strong>$1</strong>');
+    .replace(/\b(Karpathy|Anthropic|LangChain|Lutke|Greg Kamradt|Claude Code|Cursor|context poisoning|distraction|clash|lost-in-the-middle|contextual retrieval|chunking|rerank|query rewrite)\b/gi, '<strong>$1</strong>')
+    .replace(/\b(\d+%|\d+M|\d+K|~?\d+x)\b/g, '<strong>$1</strong>');
 }
 
 function getNestedI18n(lang, path) {
