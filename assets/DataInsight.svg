@@ -1,39 +1,37 @@
 <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1f0a16"/>
       <stop offset="100%" stop-color="#350e29"/>
     </linearGradient>
-    <linearGradient id="accent4" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#f472b6"/>
       <stop offset="100%" stop-color="#fb923c"/>
     </linearGradient>
-    <radialGradient id="glow4" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.3"/>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.35"/>
       <stop offset="100%" stop-color="#f472b6" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <rect width="800" height="450" fill="url(#bg4)"/>
-  <circle cx="640" cy="200" r="220" fill="url(#glow4)"/>
-  <!-- bar chart -->
-  <g transform="translate(490,140)">
-    <line x1="0" y1="180" x2="220" y2="180" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    <rect x="10" y="100" width="30" height="80" fill="url(#accent4)" rx="4"/>
-    <rect x="55" y="60" width="30" height="120" fill="url(#accent4)" rx="4"/>
-    <rect x="100" y="40" width="30" height="140" fill="url(#accent4)" rx="4"/>
-    <rect x="145" y="80" width="30" height="100" fill="url(#accent4)" rx="4"/>
-    <rect x="190" y="20" width="30" height="160" fill="url(#accent4)" rx="4"/>
-    <!-- trend line -->
-    <polyline points="25,90 70,55 115,30 160,70 205,15" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="205" cy="15" r="6" fill="#fff"/>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="500" cy="225" r="320" fill="url(#glow)"/>
+  <!-- bar chart centered with trend line -->
+  <g transform="translate(250,90)">
+    <line x1="0" y1="220" x2="300" y2="220" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="0" y2="220" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+    <rect x="20" y="130" width="42" height="90" fill="url(#accent)" rx="6"/>
+    <rect x="80" y="85" width="42" height="135" fill="url(#accent)" rx="6"/>
+    <rect x="140" y="55" width="42" height="165" fill="url(#accent)" rx="6"/>
+    <rect x="200" y="100" width="42" height="120" fill="url(#accent)" rx="6"/>
+    <rect x="260" y="30" width="42" height="190" fill="url(#accent)" rx="6"/>
+    <polyline points="40,118 100,73 160,42 220,88 280,18" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="40" cy="118" r="6" fill="#fff"/>
+    <circle cx="100" cy="73" r="6" fill="#fff"/>
+    <circle cx="160" cy="42" r="6" fill="#fff"/>
+    <circle cx="220" cy="88" r="6" fill="#fff"/>
+    <circle cx="280" cy="18" r="6" fill="#fff"/>
   </g>
-  <g font-family="Inter, -apple-system, sans-serif">
-    <text x="60" y="80" font-size="14" font-weight="600" fill="#f472b6" letter-spacing="2">AI SAAS · DATA ANALYSIS</text>
-    <text x="60" y="160" font-size="56" font-weight="800" fill="#fff">DataInsight</text>
-    <text x="60" y="200" font-size="20" fill="#cbd5e1">自然语言 SQL · 智能洞察 · 10+ 图表</text>
-    <text x="60" y="230" font-size="16" fill="#94a3b8">AI-Powered BI · PPP Pricing · Global</text>
-  </g>
-  <g stroke="rgba(244,114,182,0.4)" stroke-width="1" fill="none">
+  <g stroke="rgba(244,114,182,0.35)" stroke-width="1" fill="none">
     <path d="M20,20 L40,20 M20,20 L20,40"/>
     <path d="M780,20 L760,20 M780,20 L780,40"/>
     <path d="M20,430 L40,430 M20,430 L20,410"/>

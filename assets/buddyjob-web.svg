@@ -1,7 +1,7 @@
 <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0a1f"/>
+      <stop offset="0%" stop-color="#0b1024"/>
       <stop offset="50%" stop-color="#1a1247"/>
       <stop offset="100%" stop-color="#3d1758"/>
     </linearGradient>
@@ -10,20 +10,20 @@
       <stop offset="100%" stop-color="#c084fc"/>
     </linearGradient>
     <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.4"/>
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.45"/>
       <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="800" height="450" fill="url(#bg)"/>
-  <circle cx="640" cy="120" r="280" fill="url(#glow)"/>
-  <!-- Resume doc + chat bubble combo -->
-  <g transform="translate(440,80)">
+  <circle cx="500" cy="225" r="320" fill="url(#glow)"/>
+  <!-- Resume doc + chat bubble, centered -->
+  <g transform="translate(280,90)">
     <!-- resume doc -->
-    <rect x="0" y="40" width="170" height="220" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+    <rect x="0" y="40" width="170" height="220" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
     <rect x="20" y="60" width="80" height="14" rx="4" fill="url(#accent)" opacity="0.9"/>
-    <rect x="20" y="90" width="130" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>
-    <rect x="20" y="106" width="110" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
-    <rect x="20" y="122" width="125" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+    <rect x="20" y="90" width="130" height="6" rx="3" fill="rgba(255,255,255,0.22)"/>
+    <rect x="20" y="106" width="110" height="6" rx="3" fill="rgba(255,255,255,0.16)"/>
+    <rect x="20" y="122" width="125" height="6" rx="3" fill="rgba(255,255,255,0.16)"/>
     <rect x="20" y="155" width="60" height="20" rx="10" fill="rgba(96,165,250,0.25)" stroke="rgba(96,165,250,0.5)"/>
     <rect x="20" y="185" width="70" height="20" rx="10" fill="rgba(167,139,250,0.25)" stroke="rgba(167,139,250,0.5)"/>
     <rect x="20" y="215" width="50" height="20" rx="10" fill="rgba(34,211,238,0.25)" stroke="rgba(34,211,238,0.5)"/>
@@ -36,10 +36,10 @@
       <circle cx="80" cy="40" r="8" fill="rgba(255,255,255,0.4)"/>
     </g>
   </g>
-  <!-- text -->
-  <g font-family="Inter, -apple-system, sans-serif">
-    <text x="60" y="270" font-size="14" font-weight="600" fill="#a78bfa" letter-spacing="2" font-family="JetBrains Mono, monospace">FOR JOB SEEKERS</text>
-    <text x="60" y="320" font-size="42" font-weight="800" fill="#fff" letter-spacing="-0.02em">BuddyJob</text>
-    <text x="60" y="350" font-size="15" fill="#94a3b8">东南亚求职者 · 6 国语言</text>
+  <g stroke="rgba(167,139,250,0.35)" stroke-width="1" fill="none">
+    <path d="M20,20 L40,20 M20,20 L20,40"/>
+    <path d="M780,20 L760,20 M780,20 L780,40"/>
+    <path d="M20,430 L40,430 M20,430 L20,410"/>
+    <path d="M780,430 L760,430 M780,430 L780,410"/>
   </g>
 </svg>

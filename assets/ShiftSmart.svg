@@ -1,45 +1,49 @@
 <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1f1808"/>
       <stop offset="100%" stop-color="#3d2e0a"/>
     </linearGradient>
-    <linearGradient id="accent7" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#fbbf24"/>
       <stop offset="100%" stop-color="#fb923c"/>
     </linearGradient>
-    <radialGradient id="glow7" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.3"/>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.35"/>
       <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <rect width="800" height="450" fill="url(#bg7)"/>
-  <circle cx="640" cy="200" r="220" fill="url(#glow7)"/>
-  <!-- calendar grid -->
-  <g transform="translate(490,100)">
-    <rect x="0" y="0" width="220" height="180" rx="12" fill="rgba(251,191,36,0.1)" stroke="url(#accent7)" stroke-width="2"/>
-    <rect x="0" y="0" width="220" height="30" rx="12" fill="rgba(251,191,36,0.2)"/>
-    <circle cx="20" cy="15" r="4" fill="#fbbf24"/>
-    <circle cx="200" cy="15" r="4" fill="#fbbf24"/>
-    <!-- 7 columns × 5 rows of dots -->
-    <g fill="rgba(251,191,36,0.6)">
-      <circle cx="30" cy="60" r="6"/><circle cx="60" cy="60" r="6"/><circle cx="90" cy="60" r="6"/><circle cx="120" cy="60" r="6"/><circle cx="150" cy="60" r="6"/><circle cx="180" cy="60" r="6"/>
-      <circle cx="30" cy="90" r="6"/><circle cx="60" cy="90" r="6"/><circle cx="90" cy="90" r="6"/><circle cx="120" cy="90" r="6"/><circle cx="150" cy="90" r="6"/><circle cx="180" cy="90" r="6"/>
-      <circle cx="30" cy="120" r="6"/><circle cx="60" cy="120" r="6"/><circle cx="90" cy="120" r="6"/><circle cx="120" cy="120" r="6"/><circle cx="150" cy="120" r="6"/><circle cx="180" cy="120" r="6"/>
-      <circle cx="30" cy="150" r="6"/><circle cx="60" cy="150" r="6"/><circle cx="90" cy="150" r="6"/><circle cx="120" cy="150" r="6"/><circle cx="150" cy="150" r="6"/><circle cx="180" cy="150" r="6"/>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="500" cy="225" r="320" fill="url(#glow)"/>
+  <!-- calendar grid centered -->
+  <g transform="translate(265,90)">
+    <rect x="0" y="0" width="270" height="220" rx="14" fill="rgba(251,191,36,0.08)" stroke="url(#accent)" stroke-width="2.5"/>
+    <rect x="0" y="0" width="270" height="36" rx="14" fill="rgba(251,191,36,0.18)"/>
+    <rect x="0" y="22" width="270" height="14" fill="rgba(251,191,36,0.18)"/>
+    <circle cx="22" cy="18" r="4" fill="#fbbf24"/>
+    <circle cx="248" cy="18" r="4" fill="#fbbf24"/>
+    <!-- weekday letters -->
+    <g font-family="monospace" font-size="9" fill="rgba(251,191,36,0.5)">
+      <text x="30" y="58">M</text>
+      <text x="66" y="58">T</text>
+      <text x="102" y="58">W</text>
+      <text x="138" y="58">T</text>
+      <text x="174" y="58">F</text>
+      <text x="210" y="58">S</text>
+      <text x="246" y="58">S</text>
+    </g>
+    <g fill="rgba(251,191,36,0.55)">
+      <circle cx="36" cy="80" r="7"/><circle cx="72" cy="80" r="7"/><circle cx="108" cy="80" r="7"/><circle cx="144" cy="80" r="7"/><circle cx="180" cy="80" r="7"/><circle cx="216" cy="80" r="7"/><circle cx="252" cy="80" r="7"/>
+      <circle cx="36" cy="120" r="7"/><circle cx="72" cy="120" r="7"/><circle cx="108" cy="120" r="7"/><circle cx="144" cy="120" r="7"/><circle cx="180" cy="120" r="7"/><circle cx="216" cy="120" r="7"/><circle cx="252" cy="120" r="7"/>
+      <circle cx="36" cy="160" r="7"/><circle cx="72" cy="160" r="7"/><circle cx="108" cy="160" r="7"/><circle cx="144" cy="160" r="7"/><circle cx="180" cy="160" r="7"/><circle cx="216" cy="160" r="7"/><circle cx="252" cy="160" r="7"/>
     </g>
     <!-- highlighted shifts -->
-    <circle cx="60" cy="90" r="11" fill="#fbbf24"/>
-    <circle cx="150" cy="120" r="11" fill="#fb923c"/>
-    <circle cx="120" cy="150" r="11" fill="#fbbf24"/>
+    <circle cx="72" cy="120" r="13" fill="#fbbf24"/>
+    <circle cx="180" cy="160" r="13" fill="#fb923c"/>
+    <circle cx="144" cy="200" r="13" fill="#fbbf24"/>
+    <circle cx="108" cy="120" r="13" fill="#fbbf24"/>
   </g>
-  <g font-family="Inter, -apple-system, sans-serif">
-    <text x="60" y="80" font-size="14" font-weight="600" fill="#fbbf24" letter-spacing="2">AI APP · SCHEDULING</text>
-    <text x="60" y="160" font-size="56" font-weight="800" fill="#fff">ShiftSmart</text>
-    <text x="60" y="200" font-size="20" fill="#cbd5e1">智能排班助手 · 零售 / 服务业</text>
-    <text x="60" y="230" font-size="16" fill="#94a3b8">Shift Scheduling for Retail & Service</text>
-  </g>
-  <g stroke="rgba(251,191,36,0.4)" stroke-width="1" fill="none">
+  <g stroke="rgba(251,191,36,0.35)" stroke-width="1" fill="none">
     <path d="M20,20 L40,20 M20,20 L20,40"/>
     <path d="M780,20 L760,20 M780,20 L780,40"/>
     <path d="M20,430 L40,430 M20,430 L20,410"/>

@@ -6,6 +6,7 @@ function renderProjects(lang) {
   Object.entries(groups).forEach(([cat, list]) => {
     const grid = document.getElementById('grid-' + cat);
     if (!grid) return;
+    grid.classList.add(`grid-${cat}`);
     grid.innerHTML = list.map(p => cardHTML(p, lang)).join('');
   });
 }
