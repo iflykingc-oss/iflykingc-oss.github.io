@@ -22,6 +22,7 @@ function renderTerminal(lang) {
     else if (raw.startsWith('✓')) cls = 'ok';
     else if (raw.startsWith('→')) cls = 'arrow';
     else if (raw.startsWith('!') || raw.startsWith('×')) cls = 'err';
+    else if (raw.startsWith('//') || raw.startsWith('  ')) cls = 'meta';
     return `<span class="${cls}">${escapeHTML(raw) || '&nbsp;'}</span>`;
   }).join('\n');
 }
