@@ -36,31 +36,31 @@ const i18n = {
     },
     thinking: {
       title: '做 AI 产品的一些想法',
-      subtitle: '9 款产品下来反复打磨的几件事。引用公开研究 + 我的真实工作判断。',
+      subtitle: '9 款产品下来反复打磨的几件事。引用公开知识 + 我不认同什么 + 我补什么。',
       items: [
         {
           tag: 'METHOD',
           title: 'Vibe Coding',
-          hook: '让 AI 写代码，判断还得自己来',
-          body: 'Andrej Karpathy 2025 年提出的词，原意是"prototype-only coding with AI"。我把它拓展到生产代码，但保留一个核心习惯：每条 AI 提交我都会读 + 改再合并，从不让 AI 直接进 main。真实的边界来自 codebase：模块数过 30、互相有依赖时，AI 给的解法常常和已有抽象层不一致——这时"读 + 改"比"接受 + debug"便宜一个数量级。'
+          hook: 'Karpathy 的定位软了，拐点是验证成本',
+          body: 'Karpathy 2025 年提的词定义在"写 prototype"——我觉得太软了。把它推到生产代码真正要回答的问题不是"能不能用"，是**验证成本和编写成本的拐点**：AI 提的方案你一眼能判断对错，vibe coding 赢；需要先读 5 个模块、拼出系统行为才能判断，vibe coding 输。我自己拐点大概在 codebase ~30 files、AI 抽象层跟我定的不一致时开始。过了这条线，"读 + 改"反而比"接受 + debug"更慢。'
         },
         {
           tag: 'ARCHITECTURE',
           title: 'Harness 思维',
-          hook: '90% 的 agent 失败是 harness 错，不是模型错',
-          body: 'Anthropic 在 "Building Effective Agents" 里列了三种最常见的失败模式：context poisoning（错误信息污染 context）、distraction（context 过长，模型被无关信息带偏）、clash（context 内部矛盾）。我做了 agent 类产品（客服 / 销售陪练）后越确信：harness 工程师的工作是显式定义工具契约 + 严格守 token 预算 + 把失败路径做成可观测的。Claude Code / Cursor 本身就是这种 harness 工程已经工业化的证据。'
+          hook: 'Anthropic 漏了第 4 种失败模式',
+          body: 'Anthropic "Building Effective Agents" 列了三种失败模式（context poisoning / distraction / clash）是好分类，但**漏了第 4 种"state decay"——长对话里 agent 几轮前的关键决策被中途摘要挤掉、行为开始跑偏。** 我做客服 agent 时这个出现频率最高。**比 prompt 更能拉开差距的是工具粒度。** `send_email` 太粗；`send_email(to, subject, body, retry_count)` 显式失败语义才管用。工具质量 > prompt 质量，永远。'
         },
         {
           tag: 'PRACTICE',
-          title: 'RAG 真正主导的不是 embedding 模型',
-          hook: '你 embed 得多准不重要，chunks 切得多细才重要',
-          body: '两个公开研究：(1) Anthropic 2024 "Contextual Retrieval" — 给每个 chunk 加原文上下文做 prefix，retrieval 失败率显著下降；(2) Greg Kamradt chunking 实验——切法的重要性远超 embedding 模型选型。意思是：embedding 模型从 bge-small 换到大模型，可能 5% 提升；但你把切法改成语义级 + 加 query rewrite + 多路 rerank，整体质量直接跳一档。 **所以 RAG 系统好不好，主要看三件事：chunking、rerank、query rewrite，不看你选了哪个 embedding。**'
+          title: 'RAG ≠ embedding 模型',
+          hook: '文档时代 RAG 撑不起 Agent 工作流',
+          body: 'Anthropic "Contextual Retrieval" 和 Greg Kamradt chunking 实验都来自**文档问答**场景。把它们直接搬到 agent 是常见但错的偷懒：文档 RAG 优化"找相似文字"，agent RAG 优化"找我现在该怎么做"。**同一个 KB 在 agent 里一个 turn 可能要 query N 次，每次按 state 重写查询——单次 retrieve 的架构根本撑不住。** 我看到大多数"AI 助手" hallucination 的根因就是这个：用文档时代的 RAG 跑 agent 时代的任务。'
         },
         {
           tag: 'MINDSET',
           title: 'Context Engineering',
-          hook: 'Context 是有限预算，不是自助餐',
-          body: '2025 年 Tobi Lutke / Anthropic 反复讨论的词。一个常被忽略的工程事实：即使 Claude 现在的窗口到了 1M token，研究和实战都显示超过 50K-200K 后回答质量明显衰减（lost-in-the-middle 现象）。所以 context engineering 不只是"塞得越多越好"，是反向的操作：在 system prompt / 工具定义 / 历史 / 用户输入 / RAG 结果之间做最严取舍。**最有价值的不是塞什么进去，是决定什么不放进去。** Anthropic 的实践建议：把 prompt 拆模块（identity / instructions / examples / tools），按需 retrieve，不在 system prompt 里硬塞大量规则。'
+          hook: 'Context 预算怎么花，才是真问题',
+          body: '"Context is a budget, not a buffet" 是好口号，但实操关键不在"加什么"，在**每轮怎么重新分配**——新一条用户消息吃预算；一次工具结果要更多预算；一条 RAG 结果挤掉最近的对话。我工作中的实操是**长期槽 vs 临时槽**：身份 / 任务 state / 最近 3 步动作放常驻槽（写入贵但保留便宜）；其余按需 RAG / 摘要 / 丢弃。**真正的判断题是：什么东西该升级到常驻、什么时候又该把它降级掉。**'
         }
       ]
     },
@@ -106,31 +106,31 @@ const i18n = {
     },
     thinking: {
       title: 'Some thoughts on AI products',
-      subtitle: 'A few ideas I keep coming back to after 9 products. Public research + my own working judgment.',
+      subtitle: 'After 9 products. Public research + what I disagree with + what I add.',
       items: [
         {
           tag: 'METHOD',
           title: 'Vibe coding',
-          hook: "Let AI write the code; judgment stays with you",
-          body: 'Andrej Karpathy coined the term in 2025 — originally "prototype-only coding with AI". I extend it to production code, but keep one habit: every AI commit gets read + edited before merge. Never lets AI push to main directly. The real boundary shows up at codebase scale — once you cross ~30 modules with inter-dependencies, AI suggestions drift from your abstraction layers. At that point "read + edit" is an order of magnitude cheaper than "accept + debug later".'
+          hook: "Karpathy's framing is too soft; the real crossover is verification cost",
+          body: 'Karpathy\'s 2025 framing centers "writing prototypes". Pushed into production, the real question isn\'t "does it work" — it\'s the **verification cost vs writing cost** crossover. If you can judge AI\'s output at a glance, vibe coding wins. If you need five modules of context to judge it, vibe coding loses. In my own work the crossover sits around ~30 files and AI abstractions diverging from mine. Past that line, "read + edit" gets slower than "accept + debug later".'
         },
         {
           tag: 'ARCHITECTURE',
           title: 'Harness first',
-          hook: '90% of agent failures are harness, not model',
-          body: 'Anthropic\'s "Building Effective Agents" names three recurring failure modes: context poisoning (erroneous info corrupts the context), distraction (overlong context steers the model off-task), and clash (contradictions inside the context). After shipping agent products in customer service and sales coaching, I now believe the harness engineer\'s job is to: explicitly define tool contracts, hold a tight token budget, and make failure paths observable. Claude Code / Cursor are evidence that this harness engineering has already industrialized.'
+          hook: 'Anthropic missed a 4th failure mode',
+          body: 'Anthropic\'s "Building Effective Agents" lists three: context poisoning, distraction, clash — good taxonomy. **It misses a 4th: state decay** — long-running conversations where the agent quietly drops key decisions from earlier turns as the summary expands, behavior drifts. I see this most often in customer service agents. **What moves the needle more than prompts is tool granularity.** `send_email` is too coarse; `send_email(to, subject, body, retry_count)` with explicit failure semantics is what actually ships. Tool quality > prompt quality, always.'
         },
         {
           tag: 'PRACTICE',
-          title: 'It\'s not your embedding model — it\'s your chunks',
-          hook: 'chunking + rerank + query rewrite matter 10x more than model choice',
-          body: 'Two public studies: (1) Anthropic\'s 2024 "Contextual Retrieval" — adding an LLM-generated context prefix to each chunk significantly cuts retrieval failure rate; (2) Greg Kamradt\'s chunking experiments — chunking strategy dominates embedding model choice. Net effect: swapping bge-small for a bigger embedding gives you maybe 5%; restructuring chunking + adding query rewrite + multi-source rerank jumps overall quality a whole tier. **So RAG quality is mostly chunking + rerank + query rewrite, not which embedding you picked.**'
+          title: 'Document-era RAG cannot carry agent workflows',
+          hook: "Document RAG optimizes find-similar-text; agent RAG needs find-what-to-do-next",
+          body: 'Anthropic\'s 2024 "Contextual Retrieval" and Greg Kamradt\'s chunking research both target **document-QA**. Carrying them straight into agent workflows is a common-but-wrong shortcut: document RAG optimizes "find similar text"; agent RAG optimizes "find what to do next". **The same KB in an agent often needs N queries per turn, each rewritten by current state — one-shot retrieve can\'t keep up.** I trace most "AI assistant" hallucinations back to this: document-era RAG running agent-era tasks.'
         },
         {
           tag: 'MINDSET',
           title: 'Context engineering',
-          hook: 'Context is a finite budget, not a buffet',
-          body: 'A term Tobi Lutke / Anthropic pushed into the mainstream in 2025. One underappreciated engineering fact: even with Claude\'s 1M-token window, research and field reports agree that past ~50K-200K tokens answer quality noticeably decays (lost-in-the-middle phenomenon). Context engineering is the opposite of "feed everything" — it is rigorous trade-offs between system prompt / tool defs / history / user input / RAG results. **The highest-leverage move is not what to put in, it is what to leave out and retrieve on demand.** Anthropic\'s published practice: modular prompts (identity / instructions / examples / tools), retrieve instead of stuffing rules in system prompt.'
+          hook: "It's not what to add — it's how to re-allocate every turn",
+          body: '"Context is a budget, not a buffet" is a fine slogan. The real skill is **re-allocating every turn**: each new user message eats budget, each tool result costs more, each retrieved chunk competes with recent dialogue. In my work I keep two tiers: **persistent slots** (user persona, task state, last few actions — expensive to write, cheap to keep) vs **contextual slots** (everything else, retrieved or summarized on demand). **The judgment call: when does something earn a persistent slot, when do you demote it?**'
         }
       ]
     },
