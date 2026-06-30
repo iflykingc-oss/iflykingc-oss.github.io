@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="iflykingc · AI product builder. 9 shipping AI products spanning career platforms, customer service, sales training, and data analytics.">
   <meta property="og:title" content="iflykingc · AI Product Builder">
-  <meta property="og:description" content="9 AI products shipped across SaaS, Apps, and Tools. The site itself is a vibe-coding artifact.">
+  <meta property="og:description" content="9 AI products shipped across SaaS, Apps, and Tools.">
   <meta property="og:image" content="assets/og-image.svg">
   <title>iflykingc · AI Product Builder</title>
   <link rel="icon" type="image/svg+xml" href="assets/buddyjob-web.svg">
@@ -21,12 +21,6 @@
         <span class="logo-mark">iK</span>
         <span class="logo-text">iflykingc</span>
       </a>
-      <nav class="header-nav">
-        <a href="#about" data-i18n-link="about.title">关于</a>
-        <a href="#cat-app" data-i18n="nav.apps">AI Apps</a>
-        <a href="#cat-saas" data-i18n="nav.saas">AI SaaS</a>
-        <a href="#cat-tool" data-i18n="nav.tools">AI 工具</a>
-      </nav>
       <div class="lang-switch">
         <button class="lang-btn active" data-lang="zh">中</button>
         <span class="lang-divider">·</span>
@@ -41,17 +35,17 @@
       <div class="container">
         <span class="hero-badge" data-i18n="hero.badge">INDEPENDENT AI BUILDER</span>
         <h1 class="hero-title" data-i18n="hero.title">用 AI 做产品，让想法落地。</h1>
-        <p class="hero-subtitle" data-i18n="hero.subtitle">我是 iflykingc，独立 AI 产品构建者…</p>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">我是 iflykingc…</p>
 
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="hero-stat-num">9</div>
-            <div class="hero-stat-label" data-i18n="stats.projects">个项目</div>
+            <div class="hero-stat-label" data-i18n="stats.projects">个产品</div>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <div class="hero-stat-num">6</div>
-            <div class="hero-stat-label" data-i18n="stats.products">款已上线产品</div>
+            <div class="hero-stat-num">3</div>
+            <div class="hero-stat-label" data-i18n="stats.products">个商业 SaaS</div>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
@@ -60,7 +54,7 @@
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <div class="hero-stat-num">4</div>
+            <div class="hero-stat-num">6</div>
             <div class="hero-stat-label" data-i18n="stats.languages">种语言</div>
           </div>
         </div>
@@ -70,64 +64,33 @@
             <span data-i18n="hero.cta1">GitHub</span>
             <span class="btn-arrow-out">↗</span>
           </a>
-          <a class="btn btn-ghost" href="https://github.com/iflykingc-oss/iflykingc-oss.github.io" target="_blank" rel="noopener">
-            <span data-i18n="footer.source">查看本站源码</span>
-            <span class="btn-arrow-out">↗</span>
+          <a class="btn btn-ghost" href="mailto:i@iflykingc.com">
+            <span data-i18n="hero.cta2">联系合作</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT / BUILD -->
+    <!-- ABOUT -->
     <section class="about" id="about">
       <div class="container">
         <header class="cat-head">
-          <h2 class="cat-title" data-i18n="about.title">关于这个站点</h2>
-          <span class="cat-meta">build notes</span>
+          <h2 class="cat-title" data-i18n="about.title">关于我</h2>
+          <span class="cat-meta">about</span>
         </header>
-        <p class="about-subtitle" data-i18n="about.subtitle">它不仅是个产品展示页…</p>
-
-        <div class="stats-row">
-          <div class="stat-cell"><div class="stat-num" data-i18n="about.stat1Num">9</div><div class="stat-lab" data-i18n="about.stat1Lab">款已上线产品</div></div>
-          <div class="stat-cell"><div class="stat-num" data-i18n="about.stat2Num">1,220</div><div class="stat-lab" data-i18n="about.stat2Lab">行源代码</div></div>
-          <div class="stat-cell"><div class="stat-num" data-i18n="about.stat3Num">6</div><div class="stat-lab" data-i18n="about.stat3Lab">个文件</div></div>
-          <div class="stat-cell"><div class="stat-num" data-i18n="about.stat4Num">0</div><div class="stat-lab" data-i18n="about.stat4Lab">个外部依赖</div></div>
-          <div class="stat-cell"><div class="stat-num" data-i18n="about.stat5Num">~30s</div><div class="stat-lab" data-i18n="about.stat5Lab">从 push 到上线</div></div>
-          <div class="stat-cell"><div class="stat-num" data-i18n="about.stat6Num">3</div><div class="stat-lab" data-i18n="about.stat6Lab">次迭代</div></div>
-        </div>
-
-        <div class="terminal" aria-label="build trace">
-          <div class="terminal-head">
-            <span class="terminal-dot red"></span>
-            <span class="terminal-dot yellow"></span>
-            <span class="terminal-dot green"></span>
-            <span class="terminal-title">build.log</span>
-          </div>
-          <pre class="terminal-body" id="terminal-body"></pre>
-        </div>
-
-        <div class="tool-line">
-          <span class="tool-label" data-i18n="about.tool">工具栈</span>
-          <span class="tool-pill">Claude Code</span>
-          <span class="tool-pill">gh CLI</span>
-          <span class="tool-pill">Playwright</span>
-          <span class="tool-pill">GitHub Pages</span>
-          <span class="tool-pill">vanilla JS</span>
-        </div>
-
-        <p class="about-note" data-i18n="about.note">注：9 张 SVG 全部手画…</p>
+        <div class="about-body" id="about-body"></div>
       </div>
     </section>
 
-    <!-- ENGINEERING DECISIONS -->
-    <section class="decisions" id="decisions">
+    <!-- ON AI -->
+    <section class="thinking" id="thinking">
       <div class="container">
         <header class="cat-head">
-          <h2 class="cat-title" data-i18n="decisions.title">Engineering decisions</h2>
-          <span class="cat-meta">trade-offs</span>
+          <h2 class="cat-title" data-i18n="thinking.title">关于做 AI 产品的一些想法</h2>
+          <span class="cat-meta">on ai</span>
         </header>
-        <p class="about-subtitle" data-i18n="decisions.subtitle">每个选择都对应一条被拒绝的替代方案…</p>
-        <div class="decisions-grid" id="decisions-grid"></div>
+        <p class="thinking-subtitle" data-i18n="thinking.subtitle">9 款产品下来反复打磨的几件事。</p>
+        <div class="think-grid" id="think-grid"></div>
       </div>
     </section>
 
@@ -163,37 +126,20 @@
         <div class="grid" id="grid-tool"></div>
       </div>
     </section>
-
-    <!-- WHAT'S NEXT -->
-    <section class="next">
-      <div class="container">
-        <header class="cat-head">
-          <h2 class="cat-title" data-i18n="next.title">再加 30 分钟会改什么</h2>
-          <span class="cat-meta">honest list</span>
-        </header>
-        <p class="about-subtitle" data-i18n="next.subtitle">诚实清单…</p>
-        <ul class="next-list" id="next-list"></ul>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <h3 class="footer-title" data-i18n="footer.title">一起做点有意思的</h3>
-      <p class="footer-desc" data-i18n="footer.desc">如果你也在做 AI 产品，欢迎交流合作。</p>
-      <div class="footer-actions">
-        <a class="btn btn-primary" href="https://github.com/iflykingc-oss/iflykingc-oss.github.io" target="_blank" rel="noopener">
-          <span data-i18n="footer.source">查看本站源码</span>
-          <span class="btn-arrow-out">↗</span>
-        </a>
-        <a class="btn btn-ghost" href="https://github.com/iflykingc-oss" target="_blank" rel="noopener">
-          GitHub
-        </a>
-        <a class="btn btn-ghost" href="mailto:i@iflykingc.com">
-          Email
-        </a>
+      <div class="footer-inner">
+        <h3 class="footer-title" data-i18n="footer.title">聊聊看</h3>
+        <p class="footer-desc" data-i18n="footer.desc">如果你也在做 AI 产品…</p>
+        <div class="footer-links">
+          <a href="https://github.com/iflykingc-oss" target="_blank" rel="noopener">GitHub</a>
+          <span>·</span>
+          <a href="mailto:i@iflykingc.com">Email</a>
+        </div>
       </div>
-      <p class="footer-copy" data-i18n="footer.copy">© 2026 iflykingc · 用 AI 做产品</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 iflykingc · Made with vibe + Claude Code</p>
     </div>
   </footer>
 

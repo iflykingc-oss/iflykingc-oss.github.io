@@ -11,54 +11,6 @@ function renderProjects(lang) {
   });
 }
 
-// ===== Render terminal log =====
-function renderTerminal(lang) {
-  const el = document.getElementById('terminal-body');
-  if (!el) return;
-  const lines = i18n[lang].about.log;
-  el.innerHTML = lines.map(raw => {
-    let cls = '';
-    if (raw.startsWith('$')) cls = 'cmd';
-    else if (raw.startsWith('✓')) cls = 'ok';
-    else if (raw.startsWith('→')) cls = 'arrow';
-    else if (raw.startsWith('!') || raw.startsWith('×')) cls = 'err';
-    else if (raw.startsWith('//') || raw.startsWith('  ')) cls = 'meta';
-    return `<span class="${cls}">${escapeHTML(raw) || '&nbsp;'}</span>`;
-  }).join('\n');
-}
-
-// ===== Render decisions =====
-function renderDecisions(lang) {
-  const el = document.getElementById('decisions-grid');
-  if (!el) return;
-  const items = i18n[lang].decisions.items;
-  el.innerHTML = items.map(d => `
-    <article class="decision-card">
-      <div class="decision-vs">
-        <span class="decision-choice">${escapeHTML(d.choice)}</span>
-        <span class="decision-vs-mark">vs</span>
-        <span class="decision-rejected">${escapeHTML(d.rejected)}</span>
-      </div>
-      <p class="decision-reason">${escapeHTML(d.reason)}</p>
-    </article>
-  `).join('');
-}
-
-// ===== Render next list =====
-function renderNext(lang) {
-  const el = document.getElementById('next-list');
-  if (!el) return;
-  const items = i18n[lang].next.items;
-  el.innerHTML = items.map(t => `<li>${escapeHTML(t)}</li>`).join('');
-}
-
-// ===== Escape HTML for safe interpolation =====
-function escapeHTML(s) {
-  return String(s).replace(/[&<>"']/g, c => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]));
-}
-
 function cardHTML(p, lang) {
   const statusKey = 'status' + p.status.charAt(0).toUpperCase() + p.status.slice(1);
   const statusLabel = i18n[lang].card[statusKey];
@@ -108,11 +60,40 @@ function cardHTML(p, lang) {
   `;
 }
 
+// ===== Render About paragraphs =====
+function renderAbout(lang) {
+  const el = document.getElementById('about-body');
+  if (!el) return;
+  const paras = i18n[lang].about.paragraphs;
+  el.innerHTML = paras.map(p => `<p>${escapeHTML(p)}</p>`).join('');
+}
+
+// ===== Render "On AI" thinking cards =====
+function renderThinking(lang) {
+  const el = document.getElementById('think-grid');
+  if (!el) return;
+  const items = i18n[lang].thinking.items;
+  el.innerHTML = items.map(t => `
+    <article class="think-card">
+      <div class="think-tag">${escapeHTML(t.tag)}</div>
+      <h3 class="think-title">${escapeHTML(t.title)}</h3>
+      <p class="think-hook">${escapeHTML(t.hook)}</p>
+      <p class="think-body">${escapeHTML(t.body)}</p>
+    </article>
+  `).join('');
+}
+
 function getNestedI18n(lang, path) {
   return path.split('.').reduce((o, k) => o?.[k], i18n[lang]) || '';
 }
 
-// ===== i18n: text content for elements with data-i18n =====
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+// ===== Apply text content for elements with data-i18n =====
 function applyI18n(lang) {
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
@@ -133,9 +114,8 @@ function setLang(lang) {
   });
   applyI18n(lang);
   renderProjects(lang);
-  renderTerminal(lang);
-  renderDecisions(lang);
-  renderNext(lang);
+  renderAbout(lang);
+  renderThinking(lang);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

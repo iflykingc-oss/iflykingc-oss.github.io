@@ -1,15 +1,15 @@
-// Bilingual strings (no B2B/B2C labels — neutral)
+// Bilingual strings — focused on the person + products, NOT the website itself
 const i18n = {
   zh: {
     nav: { saas: 'AI SaaS', apps: 'AI Apps', tools: 'AI 工具' },
     hero: {
       badge: 'INDEPENDENT AI BUILDER',
       title: '用 AI 做产品，让想法落地。',
-      subtitle: '我是 iflykingc，独立 AI 产品构建者。9 款 AI 产品已上线，覆盖求职、客服、销售、数据分析、创业雷达等多个真实场景。',
+      subtitle: '我是 iflykingc，独立 AI 产品构建者。过去 6 个月里独立完成 9 款 AI 产品，覆盖求职、客服、销售、数据分析、创业雷达等多个真实场景。',
       cta1: 'GitHub',
       cta2: '联系合作'
     },
-    stats: { projects: '个项目', products: '款已上线产品', demos: '个 Live Demo', languages: '种语言' },
+    stats: { projects: '个产品', products: '个商业 SaaS', demos: '个 Live Demo', languages: '种语言' },
     sectionTitle: {
       saas: 'AI SaaS · 已商业化',
       apps: 'AI Apps · 用户产品',
@@ -27,66 +27,47 @@ const i18n = {
       updated: '更新于'
     },
     about: {
-      title: '关于这个站点',
-      subtitle: '它不仅是个产品展示页——它本身就是一个 Vibe Coding 的产物。整个站点从空白到上线用了一个下午。',
-      stat1Num: '9', stat1Lab: '款已上线产品',
-      stat2Num: '1,724', stat2Lab: '行源代码',
-      stat3Num: '6', stat3Lab: '个根目录文件',
-      stat4Num: '0', stat4Lab: '个外部依赖',
-      stat5Num: '~30s', stat5Lab: '从 push 到上线',
-      stat6Num: '4', stat6Lab: '次 git 提交',
-      tool: '工具栈',
-      log: [
-        '$ git log --pretty=format:"%h %s"',
-        '750f2ac fix(visual): strip duplicated names from SVG covers; ...',
-        '8db2bfd vibe-coding case study: add about / decisions / next',
-        'a7487d7 redesign: editorial style + corrected categories',
-        'ebfe961 init: bilingual AI portfolio site',
-        '',
-        '$ wc -l index.html styles.css script.js data.js',
-        '  201 index.html',
-        '1012 styles.css',
-        ' 145 script.js',
-        ' 366 data.js',
-        '1724 total',
-        '',
-        '$ ls assets/ | wc -l',
-        '10   ←  9 个项目封面 + og-image',
-        '',
-        '$ git log --reverse --format="%ai" | head -1',
-        '2026-06-30 17:46   ←  开始',
-        '$ git log -1 --format="%ai"',
-        '2026-06-30 19:22   ←  当前（1.5h 含规划与截图）'
-      ],
-      note: '注：9 张 SVG 全部手画、不用模板；每张配色与图标（雷达 / 八卦 / 扫描框…）按项目语义独立设计。Playwright 视觉巡检发现 6 处问题（标题过大 / 名字重复 / SaaS orphan …），已逐一整改。'
-    },
-    decisions: {
-      title: 'Engineering decisions',
-      subtitle: '每个选择都对应一条被拒绝的替代方案。当下的判断、未来说不定会改。',
-      items: [
-        { choice: '静态 HTML', rejected: 'React / Next', reason: '单页内容无需路由；去掉构建链后失败模式更少、部署更快' },
-        { choice: 'SVG 矢量封面', rejected: '真实截图', reason: '一半仓库私有取不到截图；矢量在任何 DPI 下都更清晰' },
-        { choice: '暗色主题', rejected: '亮色 / 主题切换', reason: 'AI 圈默认审美；配色让项目色调更突出，省一行切换逻辑' },
-        { choice: 'JS 切换双语', rejected: '多页静态生成', reason: '单源数据，零成本切换；代价是首屏 0.3s 未翻译内容' },
-        { choice: 'GitHub Pages', rejected: 'Vercel / Netlify', reason: '已经在 GitHub 上、零配置、CDN 足够快；纯静态文件不需要 Serverless' }
+      title: '关于我',
+      paragraphs: [
+        '我是 iflykingc，过去 6 个月独立完成了 9 个 AI 产品，每个都全栈：从架构、AI/RAG/Agent 工程、到前后端、再到上线运营。',
+        '我的偏好：用最少代码做最对的事。AI 当杠杆，判断当护栏。三类项目都做过——3 个商业 SaaS（含可私有化部署）、4 个用户 App、2 个开发者工具。',
+        '目前在新方向上探索：multi-agent harness、context engineering、面向海外市场的产品设计。'
       ]
     },
-    next: {
-      title: '再加 30 分钟会改什么',
-      subtitle: '诚实清单。做完这些就过 90 分线了。',
+    thinking: {
+      title: '做 AI 产品的一些想法',
+      subtitle: '9 款产品下来反复打磨的几件事。不是论文，是工作笔记。',
       items: [
-        '把 OG image 从渐变占位换成品牌设计（产品矩阵网格 + 标题）',
-        '跑一遍 Lighthouse perf & a11y 审计（视觉判断 99+ 但没测过）',
-        '加 prefers-reduced-motion 媒体查询，遵守用户系统设置',
-        '每个项目加 "last updated" 日期显示（数据已有，渲染层缺）',
-        '写一份 README 把 Vibe Coding 流程沉淀成可复用的方法论'
+        {
+          tag: 'METHOD',
+          title: 'Vibe Coding',
+          hook: '让 AI 做 80% 的脏活',
+          body: '我的版本是产品经理 + 架构师同时在线。命名、模块拆分、何时停、何时回退——这些判断 AI 帮不了。Vibe Coding 只有在想得比 AI 更远时才有效。'
+        },
+        {
+          tag: 'ARCHITECTURE',
+          title: 'Harness 思维',
+          hook: 'Agent = Model + Harness',
+          body: '模型跑分再高，harness 不对也是垃圾。每个产品我先画 harness：工具组合、上下文、错误处理、循环、记忆。harness 决定上限，prompt 决定下限。'
+        },
+        {
+          tag: 'PRACTICE',
+          title: 'RAG ≠ 向量检索',
+          hook: '"检索 + 拼 prompt" 只是入门',
+          body: '做 RAG 前我会先问：知识要不要先结构化？要不要先生成查询再 retrieve？要不要 query rewrite + rerank + filter 三件套？答案几乎总是——看场景。'
+        },
+        {
+          tag: 'MINDSET',
+          title: 'Context Engineering',
+          hook: 'prompt 只是其中一种元素',
+          body: 'system prompt + 工具定义 + 上下文窗口 + 历史 + 用户输入 + RAG 结果 = 完整配方。 每个产品上线前我都反复 audit 上下文组合，少塞一个 token 都不放过。'
+        }
       ]
     },
     footer: {
-      title: '一起做点有意思的',
-      desc: '如果你也在做 AI 产品，欢迎交流合作。',
-      source: '查看本站源码',
-      copy: '© 2026 iflykingc · 用 AI 做产品'
+      title: '聊聊看',
+      desc: '如果你也在做 AI 产品，欢迎交流。',
+      copy: '© 2026 iflykingc · Made with vibe + Claude Code'
     }
   },
   en: {
@@ -94,11 +75,11 @@ const i18n = {
     hero: {
       badge: 'INDEPENDENT AI BUILDER',
       title: 'Build AI products that ship.',
-      subtitle: "I'm iflykingc — an independent AI product builder. 9 shipped AI products across career platforms, customer service, sales coaching, analytics, and more.",
+      subtitle: "I'm iflykingc — an independent AI product builder. In the past 6 months I've shipped 9 AI products across career platforms, customer service, sales coaching, analytics, and AI startup discovery.",
       cta1: 'GitHub',
       cta2: 'Get in touch'
     },
-    stats: { projects: 'projects', products: 'live products', demos: 'live demos', languages: 'languages' },
+    stats: { projects: 'products', products: 'commercial SaaS', demos: 'live demos', languages: 'languages' },
     sectionTitle: {
       saas: 'AI SaaS · Commercial',
       apps: 'AI Apps · Consumer',
@@ -116,75 +97,53 @@ const i18n = {
       updated: 'Updated'
     },
     about: {
-      title: 'About this site',
-      subtitle: "This page is itself a vibe-coding artifact — from empty repo to live, in one afternoon.",
-      stat1Num: '9', stat1Lab: 'shipping products',
-      stat2Num: '1,724', stat2Lab: 'lines of code',
-      stat3Num: '6', stat3Lab: 'files in root',
-      stat4Num: '0', stat4Lab: 'dependencies',
-      stat5Num: '~30s', stat5Lab: 'push to live',
-      stat6Num: '4', stat6Lab: 'git commits',
-      tool: 'Tooling',
-      log: [
-        '$ git log --pretty=format:"%h %s"',
-        '750f2ac fix(visual): strip duplicated names from SVG covers; ...',
-        '8db2bfd vibe-coding case study: add about / decisions / next',
-        'a7487d7 redesign: editorial style + corrected categories',
-        'ebfe961 init: bilingual AI portfolio site',
-        '',
-        '$ wc -l index.html styles.css script.js data.js',
-        '  201 index.html',
-        '1012 styles.css',
-        ' 145 script.js',
-        ' 366 data.js',
-        '1724 total',
-        '',
-        '$ ls assets/ | wc -l',
-        '10   ←  9 project covers + og-image',
-        '',
-        '$ git log --reverse --format="%ai" | head -1',
-        '2026-06-30 17:46   ←  start',
-        '$ git log -1 --format="%ai"',
-        '2026-06-30 19:22   ←  now (1.5h incl. planning + screenshots)'
-      ],
-      note: 'Note: 9 SVGs drawn by hand, no template; each palette + icon (radar / bagua / scan-frame / …) tied to a project meaning. Playwright screenshots surfaced 6 visual bugs (oversized hero / duplicated names / SaaS orphan / …) — fixed one by one.'
-    },
-    decisions: {
-      title: 'Engineering decisions',
-      subtitle: 'Every choice here had a rejected alternative. Today\'s judgment may flip tomorrow.',
-      items: [
-        { choice: 'Static HTML', rejected: 'React / Next', reason: 'Single page, no routing needed; cutting the build chain means fewer failure modes and faster deploys.' },
-        { choice: 'SVG vector covers', rejected: 'Real screenshots', reason: 'Half the repos are private — vectors stay sharp at any DPI and are explicitly designed.' },
-        { choice: 'Dark theme', rejected: 'Light / theme toggle', reason: 'Default AI aesthetic, easier on long reads, lets per-project accent colors do the talking.' },
-        { choice: 'JS-driven i18n', rejected: 'Multi-page static gen', reason: 'Single source of truth, zero-cost switching. Cost: 0.3s untranslated first paint.' },
-        { choice: 'GitHub Pages', rejected: 'Vercel / Netlify', reason: 'Already on GitHub, zero-config, fast CDN. Static files do not need Serverless.' }
+      title: 'About',
+      paragraphs: [
+        "I'm iflykingc. In the past 6 months I've independently shipped 9 AI products — each one full-stack from architecture to AI engineering to frontend to launch and ops.",
+        "My bias: minimum code that solves the problem, AI as leverage and engineer judgment as the guardrail. I've shipped 3 commercial SaaS (on-prem available), 4 consumer apps, and 2 developer tools.",
+        'Currently exploring multi-agent harness, context engineering, and product design for overseas markets.'
       ]
     },
-    next: {
-      title: 'What I would change with another 30 minutes',
-      subtitle: 'Honest list. Knock these out and it crosses the 90-mark.',
+    thinking: {
+      title: 'Some thoughts on AI products',
+      subtitle: 'A few ideas I keep coming back to after 9 products. Working notes, not papers.',
       items: [
-        'Replace OG placeholder with a real branded image (product matrix + headline)',
-        'Run a Lighthouse perf & a11y audit — visually feels like 99+ but unverified',
-        'Add a prefers-reduced-motion media query to respect user settings',
-        'Show "last updated" date on every card (data has it, render layer doesn\'t)',
-        'Write a README that turns this workflow into a reusable vibe-coding play'
+        {
+          tag: 'METHOD',
+          title: 'Vibe coding',
+          hook: 'Let AI do 80% of the dirty work',
+          body: 'My version is product manager + architect at the same time. Naming, decomposition, when to stop, when to revert — AI cannot decide these. Vibe coding only works when you think further than the AI does.'
+        },
+        {
+          tag: 'ARCHITECTURE',
+          title: 'Harness first',
+          hook: 'Agent = Model + Harness',
+          body: 'No matter the model benchmarks, a bad harness still ships junk. For every product I draw the harness first: tool set, context management, error handling, loops, memory. The harness sets the ceiling; the prompt sets the floor.'
+        },
+        {
+          tag: 'PRACTICE',
+          title: 'RAG ≠ vector search',
+          hook: '"Retrieve then concat" is the junior version',
+          body: 'Before I retrieve I ask: is the knowledge already structured? Should we generate the query first? Do we need query rewrite + rerank + filter? The answer is almost always — it depends on the use case.'
+        },
+        {
+          tag: 'MINDSET',
+          title: 'Context engineering',
+          hook: 'Prompts are just one ingredient',
+          body: 'system prompt + tool defs + context window + history + user input + RAG results = the full recipe. I audit context composition for every product before launch — no token left uninspected.'
+        }
       ]
     },
     footer: {
-      title: "Let's build something interesting",
-      desc: 'If you are working on AI products, let us talk.',
-      source: 'View source on GitHub',
-      copy: '© 2026 iflykingc · Shipping AI products'
+      title: "Let's talk",
+      desc: 'If you are working on AI products, reach out.',
+      copy: '© 2026 iflykingc · Made with vibe + Claude Code'
     }
   }
 };
 
-// Project data — corrected categories + real content
-// status: active | stable | sunset
-// private: true = link badge only, no demo expected
+// Project data — unchanged
 const projects = [
-  // ===== AI Apps (Consumer) =====
   {
     id: 'buddyjob-web',
     cover: 'assets/buddyjob-web.svg',
@@ -265,8 +224,6 @@ const projects = [
     demo: null,
     code: 'https://github.com/iflykingc-oss/LifeChartApp'
   },
-
-  // ===== AI SaaS (Commercial) =====
   {
     id: 'AIkefu',
     cover: 'assets/AIkefu.svg',
@@ -327,8 +284,6 @@ const projects = [
     demo: 'https://sales-ai-coach.vercel.app',
     code: 'https://github.com/iflykingc-oss/sales-ai-coach'
   },
-
-  // ===== AI Tools =====
   {
     id: 'newPackCV-OCR',
     cover: 'assets/newPackCV-OCR.svg',
