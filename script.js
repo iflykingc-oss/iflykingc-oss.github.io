@@ -1,4 +1,4 @@
-// ===== Render project cards =====
+// ===== Render projects =====
 function renderProjects(lang) {
   const groups = { saas: [], app: [], tool: [] };
   projects.forEach(p => groups[p.category].push(p));
@@ -6,70 +6,70 @@ function renderProjects(lang) {
   Object.entries(groups).forEach(([cat, list]) => {
     const grid = document.getElementById('grid-' + cat);
     if (!grid) return;
-    grid.innerHTML = list.map(p => projectCardHTML(p, lang)).join('');
+    grid.innerHTML = list.map(p => cardHTML(p, lang)).join('');
   });
 }
 
-function projectCardHTML(p, lang) {
+function cardHTML(p, lang) {
   const statusKey = 'status' + p.status.charAt(0).toUpperCase() + p.status.slice(1);
   const statusLabel = i18n[lang].card[statusKey];
-  const privateBadge = p.private ? `<span class="badge badge-private">${i18n[lang].card.private}</span>` : '';
+  const catKey = 'sectionTitle.' + (p.category === 'saas' ? 'saas' : p.category === 'app' ? 'apps' : 'tools');
+  const catLabel = getNestedI18n(lang, catKey);
+  const archivedClass = p.status === 'sunset' ? ' archived' : '';
 
   const demoBtn = p.demo
-    ? `<a class="project-link primary" href="${p.demo}" target="_blank" rel="noopener">${i18n[lang].card.demo}</a>`
-    : `<span class="project-link disabled">${i18n[lang].card.demo}</span>`;
+    ? `<a class="card-link primary" href="${p.demo}" target="_blank" rel="noopener">${i18n[lang].card.demo} →</a>`
+    : `<span class="card-link disabled">${i18n[lang].card.demo}</span>`;
+
+  const accentStyle = p.accent ? `--accent: ${p.accent};` : '';
 
   return `
-    <article class="project-card">
-      <img class="project-cover" src="${p.cover}" alt="${p.name[lang]}" loading="lazy">
-      <div class="project-body">
-        <div class="project-head">
-          <h3 class="project-name">${p.name[lang]}</h3>
-          <div class="project-badges">
-            <span class="badge badge-${p.status}">${statusLabel}</span>
-            ${privateBadge}
-          </div>
+    <article class="card${archivedClass}" style="${accentStyle}">
+      <div class="card-cover">
+        <img src="${p.cover}" alt="${p.name[lang]}" loading="lazy">
+        <div class="card-cover-overlay">
+          <span class="card-cat">${catLabel}</span>
+          <h3 class="card-name">${p.name[lang]}</h3>
         </div>
-        <p class="project-tagline">${p.tagline[lang]}</p>
+        <span class="card-status-dot ${p.status}">${statusLabel}</span>
+        ${p.private ? `<span class="card-private">🔒 ${i18n[lang].card.private}</span>` : ''}
+      </div>
+      <div class="card-body">
+        <p class="card-tagline">${p.tagline[lang]}</p>
 
-        <div class="project-section-title">${i18n[lang].card.tech}</div>
-        <div class="project-tech">
-          ${p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+        ${p.tech[0] !== '—' ? `
+        <div>
+          <div class="card-section-label">${i18n[lang].card.tech}</div>
+          <div class="card-tech">${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
+        </div>` : ''}
+
+        <div>
+          <div class="card-section-label">${i18n[lang].card.features}</div>
+          <ul class="card-features">
+            ${p.features[lang].map(f => `<li>${f}</li>`).join('')}
+          </ul>
         </div>
 
-        <div class="project-section-title">${i18n[lang].card.features}</div>
-        <ul class="project-features">
-          ${p.features[lang].map(f => `<li>${f}</li>`).join('')}
-        </ul>
-
-        <div class="project-actions">
+        <div class="card-actions">
           ${demoBtn}
-          <a class="project-link secondary" href="${p.code}" target="_blank" rel="noopener">${i18n[lang].card.code}</a>
+          <a class="card-link secondary" href="${p.code}" target="_blank" rel="noopener">${i18n[lang].card.code}</a>
         </div>
       </div>
     </article>
   `;
 }
 
-// ===== i18n: apply text content for elements with data-i18n =====
+function getNestedI18n(lang, path) {
+  return path.split('.').reduce((o, k) => o?.[k], i18n[lang]) || '';
+}
+
+// ===== i18n: text content for elements with data-i18n =====
 function applyI18n(lang) {
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const path = el.getAttribute('data-i18n').split('.');
-    let val = i18n[lang];
-    for (const k of path) val = val?.[k];
+    const val = getNestedI18n(lang, el.getAttribute('data-i18n'));
     if (val) el.textContent = val;
-  });
-
-  document.querySelectorAll('[data-i18n-attr]').forEach(el => {
-    el.getAttribute('data-i18n-attr').split(';').forEach(pair => {
-      const [attr, path] = pair.split(':').map(s => s.trim());
-      const keys = path.split('.');
-      let val = i18n[lang];
-      for (const k of keys) val = val?.[k];
-      if (val) el.setAttribute(attr, val);
-    });
   });
 }
 

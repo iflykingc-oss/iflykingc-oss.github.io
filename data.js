@@ -1,25 +1,30 @@
-// Bilingual strings
+// Bilingual strings (no B2B/B2C labels — neutral)
 const i18n = {
   zh: {
     nav: { saas: 'AI SaaS', apps: 'AI Apps', tools: 'AI 工具' },
     hero: {
-      badge: 'AI PRODUCT BUILDER',
+      badge: 'INDEPENDENT AI BUILDER',
       title: '用 AI 做产品，让想法落地。',
-      subtitle: '我是 iflykingc，独立 AI 产品构建者。过去半年里，我做了 9 个 AI 产品，覆盖求职、客服、销售、数据分析等多个领域。',
-      cta1: '查看 GitHub',
+      subtitle: '我是 iflykingc，独立 AI 产品构建者。9 款 AI 产品已上线，覆盖求职、客服、销售、数据分析、创业雷达等多个真实场景。',
+      cta1: 'GitHub',
       cta2: '联系合作'
     },
-    stats: { projects: '个项目', saas: '个 AI SaaS 已上线', demos: '个 Live Demo' },
-    sectionTitle: { saas: '🤖 AI SaaS · 企业服务', apps: '📱 AI Apps · 面向用户', tools: '🛠 AI 工具 · 开发者' },
+    stats: { projects: '个项目', products: '款已上线产品', demos: '个 Live Demo', languages: '种语言' },
+    sectionTitle: {
+      saas: 'AI SaaS · 已商业化',
+      apps: 'AI Apps · 用户产品',
+      tools: 'AI 工具 · 开发者向'
+    },
     card: {
-      demo: '🌐 Demo',
-      code: '💻 Code',
+      demo: '在线体验',
+      code: '查看源码',
+      private: '私有',
       tech: '技术栈',
       features: '核心特性',
-      statusActive: '活跃',
-      statusStable: '稳定',
-      statusSunset: '沉淀',
-      private: '私有'
+      statusActive: '活跃维护',
+      statusStable: '稳定运行',
+      statusSunset: '已归档',
+      updated: '更新于'
     },
     footer: {
       title: '一起做点有意思的',
@@ -30,23 +35,28 @@ const i18n = {
   en: {
     nav: { saas: 'AI SaaS', apps: 'AI Apps', tools: 'AI Tools' },
     hero: {
-      badge: 'AI PRODUCT BUILDER',
-      title: 'Building AI products that ship.',
-      subtitle: "I'm iflykingc — an independent AI product builder. Over the past months, I've shipped 9 AI products spanning career platforms, customer service, sales training, and analytics.",
+      badge: 'INDEPENDENT AI BUILDER',
+      title: 'Build AI products that ship.',
+      subtitle: "I'm iflykingc — an independent AI product builder. 9 shipped AI products across career platforms, customer service, sales coaching, analytics, and more.",
       cta1: 'GitHub',
       cta2: 'Get in touch'
     },
-    stats: { projects: 'projects', saas: 'AI SaaS live', demos: 'Live demos' },
-    sectionTitle: { saas: '🤖 AI SaaS · Enterprise', apps: '📱 AI Apps · Consumer', tools: '🛠 AI Tools · Developer' },
+    stats: { projects: 'projects', products: 'live products', demos: 'live demos', languages: 'languages' },
+    sectionTitle: {
+      saas: 'AI SaaS · Commercial',
+      apps: 'AI Apps · Consumer',
+      tools: 'AI Tools · Developer'
+    },
     card: {
-      demo: '🌐 Demo',
-      code: '💻 Code',
-      tech: 'Tech Stack',
-      features: 'Features',
+      demo: 'Live demo',
+      code: 'Source code',
+      private: 'Private',
+      tech: 'Tech stack',
+      features: 'Key features',
       statusActive: 'Active',
       statusStable: 'Stable',
       statusSunset: 'Archived',
-      private: 'Private'
+      updated: 'Updated'
     },
     footer: {
       title: "Let's build something interesting",
@@ -56,102 +66,47 @@ const i18n = {
   }
 };
 
-// Project data
+// Project data — corrected categories + real content
+// status: active | stable | sunset
+// private: true = link badge only, no demo expected
 const projects = [
-  // AI SaaS
+  // ===== AI Apps (Consumer) =====
   {
     id: 'buddyjob-web',
     cover: 'assets/buddyjob-web.svg',
-    category: 'saas',
+    category: 'app',
     status: 'active',
     private: true,
-    name: { zh: 'BuddyJob', en: 'BuddyJob' },
+    accent: '#60a5fa',
+    name: { zh: 'BuddyJob 求职搭子', en: 'BuddyJob' },
     tagline: {
-      zh: '东南亚 AI 求职平台 · 简历分析 · 模拟面试',
-      en: 'Commercial AI career platform for Southeast Asian job seekers'
+      zh: '面向东南亚求职者的 AI 求职助理 — 简历分析、模拟面试、Offer 评估',
+      en: 'AI career assistant for Southeast Asian job seekers — resume, interview, offers'
     },
-    tech: ['Next.js 16', 'TypeScript', 'Supabase', 'Tailwind', 'Stripe · PayPal'],
+    tech: ['Next.js 16', 'TypeScript', 'Supabase', 'Tailwind 3', 'Stripe · PayPal'],
     features: {
-      zh: ['AI 简历分析 · 评分 + 优化建议', 'AI 模拟面试 · 多轮对话反馈', 'Offer 评估 · 6 国语言（中/英/越/泰/印/马）'],
-      en: ['AI resume scoring & optimization', 'Mock interview with multi-turn feedback', 'Offer analysis · 6 languages (zh/en/vi/id/th/ms)']
+      zh: ['AI 简历分析 + 评分 + 优化建议', '多轮 AI 模拟面试 + 实时反馈', 'Offer 对比 + AI 求职知识库', '6 国语言（zh/en/vi/id/th/ms）+ 会员订阅'],
+      en: ['AI resume scoring & optimization', 'Multi-turn AI mock interview & feedback', 'Offer comparison + AI career knowledge base', '6 languages (zh/en/vi/id/th/ms) + paid plans']
     },
     demo: 'https://buddyjob.asia',
     code: 'https://github.com/iflykingc-oss/buddyjob-web'
   },
-  {
-    id: 'AIkefu',
-    cover: 'assets/AIkefu.svg',
-    category: 'saas',
-    status: 'active',
-    private: true,
-    name: { zh: 'AIkefu', en: 'AIkefu' },
-    tagline: {
-      zh: '企业级智能客服 · 知识库 RAG · 转人工 SLA',
-      en: 'Enterprise AI customer service · RAG · Human handoff SLA'
-    },
-    tech: ['Python 3.10+', 'FastAPI', 'LangGraph', 'SQLite', 'Docker'],
-    features: {
-      zh: ['AI 质检 · RAG 知识库 · 转人工 SLA', 'SOP 流程编排 · CSAT 满意度', '多渠道接入：飞书 / 微信 / 钉钉 / WhatsApp / Telegram / LINE'],
-      en: ['AI quality inspection · RAG · handoff SLA', 'SOP workflow · CSAT', 'Multi-channel: Feishu / WeChat / DingTalk / WhatsApp / Telegram / LINE']
-    },
-    demo: null,
-    code: 'https://github.com/iflykingc-oss/AIkefu'
-  },
-  {
-    id: 'DataInsight',
-    cover: 'assets/DataInsight.svg',
-    category: 'saas',
-    status: 'active',
-    private: true,
-    name: { zh: 'DataInsight', en: 'DataInsight' },
-    tagline: {
-      zh: 'AI 数据分析 · 自然语言 SQL · 智能洞察',
-      en: 'AI-powered data analysis · NL2SQL · Smart insights'
-    },
-    tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind 4', 'Supabase'],
-    features: {
-      zh: ['自然语言 SQL · Excel/CSV 一键分析', '10+ 图表类型 · 6 行业模板', 'GA4 转化埋点 · 中英双语 · 暗色主题'],
-      en: ['Natural language SQL · Excel/CSV upload', '10+ chart types · 6 industry templates', 'GA4 conversion tracking · EN/CN · dark mode']
-    },
-    demo: 'https://www.datainsight.live',
-    code: 'https://github.com/iflykingc-oss/DataInsight'
-  },
-  {
-    id: 'sales-ai-coach',
-    cover: 'assets/sales-ai-coach.svg',
-    category: 'saas',
-    status: 'active',
-    private: false,
-    name: { zh: '销冠 AI 教练', en: 'Sales AI Coach' },
-    tagline: {
-      zh: 'AI 销售陪练 · 话术生成 · 自动复盘',
-      en: 'AI sales coach · Pitch generation · Auto-review'
-    },
-    tech: ['React 19', 'Node.js', 'FastAPI', 'Prisma', 'PostgreSQL'],
-    features: {
-      zh: ['AI 话术生成：3 种风格（共情/直爽/专业）', '8 维度评分陪练 · 实时反馈', '知识库 · 成就系统 · 行业插件'],
-      en: ['3-style pitch generator (empathy / direct / pro)', '8-dimension scoring practice', 'Knowledge base · achievements · industry plugins']
-    },
-    demo: 'https://sales-ai-coach.vercel.app',
-    code: 'https://github.com/iflykingc-oss/sales-ai-coach'
-  },
-
-  // AI Apps
   {
     id: 'AI-Radar',
     cover: 'assets/AI-Radar.svg',
     category: 'app',
     status: 'active',
     private: false,
+    accent: '#a3e635',
     name: { zh: 'AI 创业雷达', en: 'AI Radar' },
     tagline: {
-      zh: '发现最新 AI 创业项目 · 4D 验证系统',
-      en: 'Discover latest AI products · 4D verification'
+      zh: '每天发现并验证最新的 AI 创业项目 — 4D 评分 + 多语言推送',
+      en: 'Discover and validate the newest AI products — 4D scoring + multi-channel push'
     },
-    tech: ['Next.js 14', 'TypeScript', 'Supabase', 'LangGraph'],
+    tech: ['Next.js 14', 'TypeScript', 'Supabase', 'LangGraph (Python)'],
     features: {
-      zh: ['15 数据源（Reddit/HN/Product Hunt/arXiv...）', '4D 验证 · 0-100 置信度', '多语言推送：Email / 飞书 / Slack / Discord / TG'],
-      en: ['15 data sources (Reddit/HN/PH/arXiv…)', '4D verification · 0–100 confidence', 'Multichannel push: Email / Feishu / Slack / Discord / TG']
+      zh: ['15 数据源：Reddit / HN / Product Hunt / arXiv / Hugging Face …', '4D 验证系统 · 置信度 0–100 评分', '推送：Email / 飞书 / Slack / Discord / TG / 钉钉', '12 类别分类 + 趋势追踪 + 对比雷达'],
+      en: ['15 sources: Reddit / HN / Product Hunt / arXiv / Hugging Face …', '4D verification system · confidence 0–100', 'Push: Email / Feishu / Slack / Discord / TG / DingTalk', '12 categories + trends + comparison radar']
     },
     demo: 'https://ai-radar-delta-ochre.vercel.app',
     code: 'https://github.com/iflykingc-oss/AI-Radar'
@@ -162,15 +117,16 @@ const projects = [
     category: 'app',
     status: 'stable',
     private: false,
-    name: { zh: 'ShiftSmart', en: 'ShiftSmart' },
+    accent: '#fbbf24',
+    name: { zh: 'ShiftSmart 智能排班', en: 'ShiftSmart' },
     tagline: {
-      zh: '海外智能排班助手 · 零售 / 服务业',
-      en: 'Smart shift scheduling for retail & service stores'
+      zh: '面向海外门店的智能排班 App — 零售 / 餐饮 / 服务业',
+      en: 'AI shift scheduling for overseas retail & service stores'
     },
-    tech: ['TypeScript', 'PL/pgSQL', 'Mobile'],
+    tech: ['React Native (Expo)', 'TypeScript', 'Supabase', 'Tailwind (RN)'],
     features: {
-      zh: ['智能排班 · 自动冲突检测', '员工排班偏好匹配', 'Google Play 海外分发'],
-      en: ['Smart scheduling · auto conflict detection', 'Staff preference matching', 'Google Play distribution']
+      zh: ['业务量预测 → 自动生成下周排班', '拖拽式手动排班 + 班次冲突检测', '员工换班申请 & 审批工作流', '中英双语 + GDPR 合规 + Sentry 监控'],
+      en: ['Demand-based auto scheduling', 'Drag-and-drop manual scheduling + conflict detection', 'Shift swap requests & approvals', 'ZH/EN bilingual + GDPR compliant + Sentry']
     },
     demo: null,
     code: 'https://github.com/iflykingc-oss/ShiftSmart'
@@ -181,36 +137,100 @@ const projects = [
     category: 'app',
     status: 'stable',
     private: false,
-    name: { zh: 'LifeChart 算命', en: 'LifeChart' },
+    accent: '#c084fc',
+    name: { zh: '命运图谱 LifeChart', en: 'LifeChart · 命运图谱' },
     tagline: {
-      zh: 'AI 智能算命 · 八字 · 紫微 · 塔罗',
-      en: 'AI destiny reading · iOS & Android'
+      zh: '"玄机子" AI 大师 — 八字 · 紫微 · 姓名 · 占卜 · 语音对话',
+      en: '"Master XuanJiZi" — Bazi · Zi Wei · Name · Divination · voice chat'
     },
-    tech: ['JavaScript', 'Kotlin', 'Swift'],
+    tech: ['React Native (Expo 54)', 'Zustand', 'react-native-voice', 'expo-speech'],
     features: {
-      zh: ['八字排盘 · 紫微斗数', '塔罗占卜 · 流年解读', 'iOS + Android 双端原生'],
-      en: ['Four Pillars · Zi Wei Dou Shu', 'Tarot reading · annual forecast', 'Native iOS + Android']
+      zh: ['玄机子 AI 大师：阴阳五行 / 紫微斗数 / 姓名测算', '语音输入输出 · 今日运势 · 解梦 · 风水', '分析历史 + 知识库 · 7 大功能屏', 'iOS + Android 双端原生体验'],
+      en: ['AI Master "XuanJiZi" — Yin-Yang / Zi Wei / Name analysis', 'Voice I/O · daily fortune · dream · feng shui', 'Analysis history + knowledge base · 7 screens', 'Native iOS + Android']
     },
     demo: null,
     code: 'https://github.com/iflykingc-oss/LifeChartApp'
   },
 
-  // AI Tools
+  // ===== AI SaaS (Commercial) =====
+  {
+    id: 'AIkefu',
+    cover: 'assets/AIkefu.svg',
+    category: 'saas',
+    status: 'active',
+    private: true,
+    accent: '#2dd4bf',
+    name: { zh: 'AIkefu 智能客服', en: 'AIkefu' },
+    tagline: {
+      zh: '企业级智能客服 — 支持私有化本地部署，SaaS 也可',
+      en: 'Enterprise AI customer service — on-prem or SaaS'
+    },
+    tech: ['Python 3.10+', 'FastAPI', 'LangGraph', 'SQLite / PG', 'Docker'],
+    features: {
+      zh: ['私有化本地部署 — Docker 一键启动，数据 100% 内网', 'RAG 知识库 + AI 质检 + SOP 流程编排', '转人工 SLA · 工单 · CSAT 满意度', '多渠道：飞书 / 微信 / 钉钉 / WhatsApp / Telegram / LINE'],
+      en: ['On-prem deployment — Docker one-click, data stays in your network', 'RAG knowledge base + AI quality inspection + SOP workflow', 'Human handoff SLA · tickets · CSAT', 'Multi-channel: Feishu / WeChat / DingTalk / WhatsApp / Telegram / LINE']
+    },
+    demo: null,
+    code: 'https://github.com/iflykingc-oss/AIkefu'
+  },
+  {
+    id: 'DataInsight',
+    cover: 'assets/DataInsight.svg',
+    category: 'saas',
+    status: 'active',
+    private: true,
+    accent: '#f472b6',
+    name: { zh: 'DataInsight 数据洞察', en: 'DataInsight' },
+    tagline: {
+      zh: 'AI 数据分析 SaaS — 上传 Excel / CSV，AI 自动生成图表与洞察报告',
+      en: 'AI data analysis SaaS — upload Excel/CSV, get instant dashboards'
+    },
+    tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind 4', 'Supabase'],
+    features: {
+      zh: ['自然语言 SQL · AI 图表推荐 · 智能数据洞察', '10+ 图表类型 · 6 行业模板（销售/营销/财务/HR/电商）', 'GA4 转化埋点 · 暗色主题 · 中英双语', 'PPP 定价（按购买力平价）面向全球市场'],
+      en: ['Natural language SQL · AI chart recommender · smart insights', '10+ chart types · 6 industry templates', 'GA4 tracking · dark mode · EN/CN', 'PPP pricing (purchasing-power parity) for global markets']
+    },
+    demo: 'https://www.datainsight.live',
+    code: 'https://github.com/iflykingc-oss/DataInsight'
+  },
+  {
+    id: 'sales-ai-coach',
+    cover: 'assets/sales-ai-coach.svg',
+    category: 'saas',
+    status: 'active',
+    private: false,
+    accent: '#fb7185',
+    name: { zh: '销冠 AI 教练', en: 'Sales AI Coach' },
+    tagline: {
+      zh: 'AI 销售陪练平台 — 让每个销售都成为销冠',
+      en: 'AI sales coaching platform — turn every rep into a top performer'
+    },
+    tech: ['React 19', 'Node.js', 'FastAPI', 'Prisma', 'PostgreSQL'],
+    features: {
+      zh: ['AI 话术生成：3 种风格（直爽/共情/专业）', '智能陪练 + 8 维度评分 + 实时反馈', '自动复盘 + 知识库 + 团队协作', '成就系统 · 行业插件（教育/金融/SaaS …）'],
+      en: ['3-style AI pitch generator (direct / empathy / pro)', 'AI practice + 8-dimension scoring + feedback', 'Auto review + knowledge base + team collab', 'Achievements + industry plugins (edu/finance/SaaS …)']
+    },
+    demo: 'https://sales-ai-coach.vercel.app',
+    code: 'https://github.com/iflykingc-oss/sales-ai-coach'
+  },
+
+  // ===== AI Tools =====
   {
     id: 'newPackCV-OCR',
     cover: 'assets/newPackCV-OCR.svg',
     category: 'tool',
     status: 'active',
     private: false,
+    accent: '#22d3ee',
     name: { zh: 'VibeCoding OCR', en: 'VibeCoding OCR' },
     tagline: {
-      zh: '智能文档/图片信息提取引擎 · 8 行业场景',
-      en: 'Document & image info extraction engine · 8 industries'
+      zh: '文档/图片结构化信息提取 — 8 行业场景 · 全格式 · Apache 2.0 开源',
+      en: 'Document & image info extraction — 8 industries · all formats · Apache 2.0'
     },
-    tech: ['Python 3.12', 'MinerU', 'VLM', 'Apache 2.0'],
+    tech: ['Python 3.12', 'MinerU', 'VLM-First', 'Apache 2.0'],
     features: {
-      zh: ['8 行业模板：包装 / 金融 / 医药 / 合同 / 证件', '全格式输入：图片 / PDF / DOCX / PPTX / XLSX', 'VLM-First 双通道融合 · 22 测试通过'],
-      en: ['8 industry templates: packaging / finance / pharma / contract / ID', 'All-format: image / PDF / DOCX / PPTX / XLSX', 'VLM-First dual-channel · 22 tests passing']
+      zh: ['8 行业模板：包装 / 金融票据 / 银行流水 / 医药 / 合同 / 证件 / 物流 / 通用', '全格式输入：图片 / PDF / DOCX / PPTX / XLSX', 'VLM + OCR 双通道融合 · 22 测试通过 · 结构化 JSON 输出', '表格识别 + 条码 / 二维码 / 公章检测'],
+      en: ['8 templates: packaging / finance / pharma / contract / ID / logistics / …', 'All formats: image / PDF / DOCX / PPTX / XLSX', 'VLM + OCR dual-channel fusion · 22 tests · JSON out', 'Tables + barcode / QR / stamp detection']
     },
     demo: null,
     code: 'https://github.com/iflykingc-oss/newPackCV-OCR'
@@ -221,15 +241,16 @@ const projects = [
     category: 'tool',
     status: 'sunset',
     private: false,
-    name: { zh: 'aisclab', en: 'aisclab' },
+    accent: '#94a3b8',
+    name: { zh: 'aisclab 实验沙盒', en: 'aisclab' },
     tagline: {
-      zh: 'AI 实验沙盒 · 早期原型仓库',
-      en: 'AI sandbox · early-stage prototypes'
+      zh: '空仓库 · 早期 AI 原型试验场（已归档，仅作历史占位）',
+      en: 'Empty repo · early AI prototype sandbox (archived, placeholder only)'
     },
-    tech: ['Various'],
+    tech: ['—'],
     features: {
-      zh: ['早期 AI 原型实验', '想法验证 · 概念验证', '沉淀归档 · 不再维护'],
-      en: ['Early AI prototype experiments', 'Idea & proof-of-concept', 'Archived · no longer maintained']
+      zh: ['当前状态：仓库内无代码', '曾经用于：想法验证 · 概念原型 · 临时脚本', '已迁移至各正式项目（VibeCoding OCR / AI Radar …）', '保留占位 · 不再维护'],
+      en: ['Status: no code in repo', 'Originally used for: idea validation · POC · scratch scripts', 'Migrated to live projects (VibeCoding OCR / AI Radar …)', 'Kept as placeholder · no longer maintained']
     },
     demo: null,
     code: 'https://github.com/iflykingc-oss/aisclab'

@@ -1,37 +1,42 @@
 <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1f0a0a"/>
-      <stop offset="100%" stop-color="#3d0e0e"/>
+      <stop offset="0%" stop-color="#1a0508"/>
+      <stop offset="100%" stop-color="#3d0a14"/>
     </linearGradient>
     <linearGradient id="accent5" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#fbbf24"/>
     </linearGradient>
     <radialGradient id="glow5" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#fb7185" stop-opacity="0.3"/>
+      <stop offset="0%" stop-color="#fb7185" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="#fb7185" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="800" height="450" fill="url(#bg5)"/>
-  <circle cx="640" cy="200" r="220" fill="url(#glow5)"/>
-  <!-- target/dartboard -->
-  <g transform="translate(560,100)">
-    <circle cx="100" cy="125" r="100" fill="none" stroke="rgba(251,113,133,0.3)" stroke-width="2"/>
-    <circle cx="100" cy="125" r="70" fill="none" stroke="rgba(251,113,133,0.5)" stroke-width="2"/>
-    <circle cx="100" cy="125" r="40" fill="url(#accent5)"/>
-    <circle cx="100" cy="125" r="12" fill="#fff"/>
+  <circle cx="640" cy="200" r="280" fill="url(#glow5)"/>
+  <!-- Big bold target -->
+  <g transform="translate(540,90)">
+    <circle cx="100" cy="135" r="105" fill="none" stroke="rgba(251,113,133,0.2)" stroke-width="3"/>
+    <circle cx="100" cy="135" r="80" fill="none" stroke="rgba(251,113,133,0.4)" stroke-width="3"/>
+    <circle cx="100" cy="135" r="55" fill="url(#accent5)"/>
+    <circle cx="100" cy="135" r="55" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    <circle cx="100" cy="135" r="20" fill="#fff"/>
+    <!-- arrows hitting bullseye -->
+    <line x1="160" y1="60" x2="102" y2="133" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="102,133 95,128 95,138" fill="#fbbf24"/>
+    <line x1="50" y1="80" x2="98" y2="135" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="98,135 95,128 105,128" fill="#fbbf24"/>
+    <line x1="170" y1="160" x2="103" y2="138" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="103,138 98,128 110,131" fill="#fbbf24"/>
+    <!-- score numbers -->
+    <text x="50" y="220" font-family="JetBrains Mono, monospace" font-size="11" fill="#fb7185" font-weight="700">8.6</text>
+    <text x="98" y="220" font-family="JetBrains Mono, monospace" font-size="11" fill="#fb7185" font-weight="700">9.2</text>
+    <text x="145" y="220" font-family="JetBrains Mono, monospace" font-size="11" fill="#fb7185" font-weight="700">9.5</text>
   </g>
   <g font-family="Inter, -apple-system, sans-serif">
-    <text x="60" y="80" font-size="14" font-weight="600" fill="#fb7185" letter-spacing="2">AI SAAS · SALES TRAINING</text>
-    <text x="60" y="160" font-size="56" font-weight="800" fill="#fff">Sales AI Coach</text>
-    <text x="60" y="200" font-size="20" fill="#cbd5e1">销冠教练 · AI 话术 · 智能陪练 · 自动复盘</text>
-    <text x="60" y="230" font-size="16" fill="#94a3b8">Sales Coach · Multi-Model · Practice & Review</text>
-  </g>
-  <g stroke="rgba(251,113,133,0.4)" stroke-width="1" fill="none">
-    <path d="M20,20 L40,20 M20,20 L20,40"/>
-    <path d="M780,20 L760,20 M780,20 L780,40"/>
-    <path d="M20,430 L40,430 M20,430 L20,410"/>
-    <path d="M780,430 L760,430 M780,430 L780,410"/>
+    <text x="60" y="260" font-size="14" font-weight="600" fill="#fb7185" letter-spacing="2" font-family="JetBrains Mono, monospace">SALES TRAINING</text>
+    <text x="60" y="320" font-size="42" font-weight="800" fill="#fff" letter-spacing="-0.02em">Sales AI Coach</text>
+    <text x="60" y="350" font-size="15" fill="#94a3b8">AI 陪练 · 8 维度评分</text>
   </g>
 </svg>

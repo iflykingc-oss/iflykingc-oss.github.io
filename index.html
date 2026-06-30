@@ -12,20 +12,25 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-glow"></div>
+  <div class="bg-mesh"></div>
+  <div class="bg-noise"></div>
 
   <header class="header">
     <div class="header-inner">
       <a href="#" class="logo">
-        <span class="logo-dot"></span>
+        <span class="logo-mark">iK</span>
         <span class="logo-text">iflykingc</span>
       </a>
-      <nav class="lang-switch">
-        <button class="lang-btn active" data-lang="zh">中</button>
-        <span class="lang-divider">|</span>
-        <button class="lang-btn" data-lang="en">EN</button>
+      <nav class="header-nav">
+        <a href="#cat-saas" data-i18n="nav.saas">AI SaaS</a>
+        <a href="#cat-app" data-i18n="nav.apps">AI Apps</a>
+        <a href="#cat-tool" data-i18n="nav.tools">AI 工具</a>
       </nav>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="zh">中</button>
+        <span class="lang-divider">·</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </div>
   </header>
 
@@ -33,12 +38,35 @@
     <!-- HERO -->
     <section class="hero">
       <div class="container">
-        <span class="hero-badge" data-i18n="hero.badge">AI PRODUCT BUILDER</span>
+        <span class="hero-badge" data-i18n="hero.badge">INDEPENDENT AI BUILDER</span>
         <h1 class="hero-title" data-i18n="hero.title">用 AI 做产品，让想法落地。</h1>
         <p class="hero-subtitle" data-i18n="hero.subtitle">我是 iflykingc，独立 AI 产品构建者…</p>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">9</div>
+            <div class="hero-stat-label" data-i18n="stats.projects">个项目</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">6</div>
+            <div class="hero-stat-label" data-i18n="stats.products">款已上线产品</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">5</div>
+            <div class="hero-stat-label" data-i18n="stats.demos">个 Live Demo</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">4</div>
+            <div class="hero-stat-label" data-i18n="stats.languages">种语言</div>
+          </div>
+        </div>
+
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://github.com/iflykingc-oss" target="_blank" rel="noopener">
-            <span data-i18n="hero.cta1">查看 GitHub</span>
+            <span data-i18n="hero.cta1">GitHub</span>
             <span class="btn-arrow">→</span>
           </a>
           <a class="btn btn-ghost" href="mailto:i@iflykingc.com">
@@ -48,51 +76,36 @@
       </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats">
+    <!-- AI APPS -->
+    <section class="category" id="cat-app" data-cat="app">
       <div class="container">
-        <div class="stats-grid">
-          <div class="stat">
-            <div class="stat-num">9</div>
-            <div class="stat-label" data-i18n="stats.projects">个项目</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">4</div>
-            <div class="stat-label" data-i18n="stats.saas">个 AI SaaS 已上线</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">5</div>
-            <div class="stat-label" data-i18n="stats.demos">个 Live Demo</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">3</div>
-            <div class="stat-label" data-i18n="card.features">核心领域</div>
-          </div>
-        </div>
+        <header class="cat-head">
+          <h2 class="cat-title" data-i18n="sectionTitle.apps">📱 AI Apps · 用户产品</h2>
+          <span class="cat-meta">04 / products</span>
+        </header>
+        <div class="grid" id="grid-app"></div>
       </div>
     </section>
 
     <!-- AI SAAS -->
-    <section class="category" data-cat="saas">
+    <section class="category" id="cat-saas" data-cat="saas">
       <div class="container">
-        <h2 class="category-title" data-i18n="sectionTitle.saas">🤖 AI SaaS · 企业服务</h2>
-        <div class="projects-grid" id="grid-saas"></div>
-      </div>
-    </section>
-
-    <!-- AI APPS -->
-    <section class="category" data-cat="app">
-      <div class="container">
-        <h2 class="category-title" data-i18n="sectionTitle.apps">📱 AI Apps · 面向用户</h2>
-        <div class="projects-grid" id="grid-app"></div>
+        <header class="cat-head">
+          <h2 class="cat-title" data-i18n="sectionTitle.saas">🤖 AI SaaS · 已商业化</h2>
+          <span class="cat-meta">03 / products</span>
+        </header>
+        <div class="grid" id="grid-saas"></div>
       </div>
     </section>
 
     <!-- AI TOOLS -->
-    <section class="category" data-cat="tool">
+    <section class="category" id="cat-tool" data-cat="tool">
       <div class="container">
-        <h2 class="category-title" data-i18n="sectionTitle.tools">🛠 AI 工具 · 开发者</h2>
-        <div class="projects-grid" id="grid-tool"></div>
+        <header class="cat-head">
+          <h2 class="cat-title" data-i18n="sectionTitle.tools">🛠 AI 工具 · 开发者向</h2>
+          <span class="cat-meta">02 / products</span>
+        </header>
+        <div class="grid" id="grid-tool"></div>
       </div>
     </section>
   </main>
