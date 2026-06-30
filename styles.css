@@ -917,8 +917,13 @@ body {
 .think-body {
   font-size: 14px;
   color: var(--text-soft);
-  line-height: 1.65;
+  line-height: 1.7;
   margin: 0;
+}
+
+.think-body strong {
+  color: var(--text);
+  font-weight: 600;
 }
 
 /* ===== Responsive for new sections ===== */

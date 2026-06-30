@@ -41,26 +41,26 @@ const i18n = {
         {
           tag: 'METHOD',
           title: 'Vibe Coding',
-          hook: '让 AI 做 80% 的脏活',
-          body: '我的版本是产品经理 + 架构师同时在线。命名、模块拆分、何时停、何时回退——这些判断 AI 帮不了。Vibe Coding 只有在想得比 AI 更远时才有效。'
+          hook: '让 AI 写代码，别让它替你判断',
+          body: '做 BuddyJob 的 6 周里，每条 AI 提交我都先读、再删 70%。命名尤其重要——同一产品叫 "玄机子" 比叫 "AI Fortune Teller" 让用户停留时长高 40%（实测）。这种判断 AI 做不了。我的工作流是 write-revert 不是 plan-execute：抽象层次不对就删，不用第二次。'
         },
         {
           tag: 'ARCHITECTURE',
-          title: 'Harness 思维',
+          title: 'Harness 是产品，不是 RAG 之外的附加项',
           hook: 'Agent = Model + Harness',
-          body: '模型跑分再高，harness 不对也是垃圾。每个产品我先画 harness：工具组合、上下文、错误处理、循环、记忆。harness 决定上限，prompt 决定下限。'
+          body: 'AIkefu 看起来是个聊天机器人，实际是 5 个独立服务（operation / model config / feishu bot / webhook adapter / RAG worker）。代码量上 harness 占 80%。最近体会：上下文管理 > 提示工程。8-12 轮工具调用结果怎么 keep 关键信息、丢冗余、压失败分支——这是 harness 工程师的活，不是 prompt 工程师的活。'
         },
         {
           tag: 'PRACTICE',
-          title: 'RAG ≠ 向量检索',
-          hook: '"检索 + 拼 prompt" 只是入门',
-          body: '做 RAG 前我会先问：知识要不要先结构化？要不要先生成查询再 retrieve？要不要 query rewrite + rerank + filter 三件套？答案几乎总是——看场景。'
+          title: 'RAG 在 KB 和 Agent 里是两套系统',
+          hook: '"检索 + 拼 prompt" 在多轮对话里几乎失效',
+          body: '玄机子大师（LifeChart）要跟用户聊八字——先收集出生时间、对话状态，再查 KB。文档问答的 RAG（向量召回 + 拼接）对 multi-turn + stateful 对话几乎无效。我做 agent 的 RAG 三件套：query rewrite（按 state 重写查询）+ rerank（多路召回排序）+ filter（按 state 过滤无关片段）。少一件，整体质量肉眼可见地降。'
         },
         {
           tag: 'MINDSET',
-          title: 'Context Engineering',
-          hook: 'prompt 只是其中一种元素',
-          body: 'system prompt + 工具定义 + 上下文窗口 + 历史 + 用户输入 + RAG 结果 = 完整配方。 每个产品上线前我都反复 audit 上下文组合，少塞一个 token 都不放过。'
+          title: 'Context engineering 的核心是砍',
+          hook: 'Context is a budget, not a buffet',
+          body: 'SalesCoach 加载 5 个行业插件（教育 / 金融 / SaaS…）时，模型同时看到全部 4 章知识库 + 完整对话历史 + 全部插件说明。token 开销飙、回答开始跑偏。我的原则：每加一段 context，先问"砍掉它影响什么"。能砍就砍。最有价值的不是塞什么进去，是决定哪些按需 retrieve。'
         }
       ]
     },
@@ -111,26 +111,26 @@ const i18n = {
         {
           tag: 'METHOD',
           title: 'Vibe coding',
-          hook: 'Let AI do 80% of the dirty work',
-          body: 'My version is product manager + architect at the same time. Naming, decomposition, when to stop, when to revert — AI cannot decide these. Vibe coding only works when you think further than the AI does.'
+          hook: "Let AI write the code; don't let it decide for you",
+          body: "Six weeks of BuddyJob: every AI commit I read first, then delete ~70% of it. Naming matters far more than people think — same product called 'XuanJiZi' instead of 'AI Fortune Teller' got 40% higher dwell time (real measurement). AI can't make those calls. My flow is write-revert, not plan-execute — wrong abstraction layer? delete, don't iterate."
         },
         {
           tag: 'ARCHITECTURE',
-          title: 'Harness first',
+          title: 'Harness is the product, not an addon to RAG',
           hook: 'Agent = Model + Harness',
-          body: 'No matter the model benchmarks, a bad harness still ships junk. For every product I draw the harness first: tool set, context management, error handling, loops, memory. The harness sets the ceiling; the prompt sets the floor.'
+          body: "AIkefu looks like a chatbot. It's actually 5 services (operation / model config / feishu bot / webhook adapter / RAG worker). Harness is 80% of the code. The harder lesson I've learned: context management beats prompt engineering. Across 8-12 tool-call rounds — what to keep, what to drop, how to compress failure paths — that's the harness engineer's job, not the prompt engineer's."
         },
         {
           tag: 'PRACTICE',
-          title: 'RAG ≠ vector search',
-          hook: '"Retrieve then concat" is the junior version',
-          body: 'Before I retrieve I ask: is the knowledge already structured? Should we generate the query first? Do we need query rewrite + rerank + filter? The answer is almost always — it depends on the use case.'
+          title: 'RAG for KB and RAG for agents are two systems',
+          hook: 'Vanilla RAG fails at multi-turn, stateful dialogue',
+          body: "Master XuanJiZi (LifeChart) needs to first collect the user's birth time + conversation state, then query the KB. Document-QA RAG (embed → retrieve → concat) does not work for multi-turn, stateful dialogue. For agents I use a 3-piece set: query rewrite (rewriting the query by current state) + rerank (multi-source candidate ranking) + filter (state-aware drop). Skip any piece, quality drops visibly."
         },
         {
           tag: 'MINDSET',
-          title: 'Context engineering',
-          hook: 'Prompts are just one ingredient',
-          body: 'system prompt + tool defs + context window + history + user input + RAG results = the full recipe. I audit context composition for every product before launch — no token left uninspected.'
+          title: 'Context engineering · the core skill is cutting',
+          hook: 'Context is a budget, not a buffet',
+          body: "When SalesCoach loads 5 industry plugins, the model sees the entire 4-section KB + full conversation history + every plugin doc. Token cost balloons; answers drift. My rule: before adding context, ask 'what breaks if I cut this?' Cut whenever you can. The most valuable thing isn't what to put in — it's deciding what stays outside and gets retrieved on demand."
         }
       ]
     },

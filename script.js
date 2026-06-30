@@ -78,9 +78,16 @@ function renderThinking(lang) {
       <div class="think-tag">${escapeHTML(t.tag)}</div>
       <h3 class="think-title">${escapeHTML(t.title)}</h3>
       <p class="think-hook">${escapeHTML(t.hook)}</p>
-      <p class="think-body">${escapeHTML(t.body)}</p>
+      <p class="think-body">${highlight(t.body)}</p>
     </article>
   `).join('');
+}
+
+// Highlight project names + numbers in body (bold)
+function highlight(s) {
+  return escapeHTML(s)
+    .replace(/\b(BuddyJob|AIkefu|DataInsight|LifeChart|SalesCoach|AI Radar|ShiftSmart|玄机子)\b/g, '<strong>$1</strong>')
+    .replace(/\b(\d+%|\d+x|~?70%|40%)\b/g, '<strong>$1</strong>');
 }
 
 function getNestedI18n(lang, path) {
