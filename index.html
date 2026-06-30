@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="iflykingc · AI product builder. 9 shipping AI products spanning career platforms, customer service, sales training, and data analytics.">
+  <meta property="og:title" content="iflykingc · AI Product Builder">
+  <meta property="og:description" content="9 AI products shipped across SaaS, Apps, and Tools.">
+  <meta property="og:image" content="assets/og-image.svg">
+  <title>iflykingc · AI Product Builder</title>
+  <link rel="icon" type="image/svg+xml" href="assets/buddyjob-web.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-dot"></span>
+        <span class="logo-text">iflykingc</span>
+      </a>
+      <nav class="lang-switch">
+        <button class="lang-btn active" data-lang="zh">中</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero-badge" data-i18n="hero.badge">AI PRODUCT BUILDER</span>
+        <h1 class="hero-title" data-i18n="hero.title">用 AI 做产品，让想法落地。</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">我是 iflykingc，独立 AI 产品构建者…</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/iflykingc-oss" target="_blank" rel="noopener">
+            <span data-i18n="hero.cta1">查看 GitHub</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a class="btn btn-ghost" href="mailto:i@iflykingc.com">
+            <span data-i18n="hero.cta2">联系合作</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">9</div>
+            <div class="stat-label" data-i18n="stats.projects">个项目</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4</div>
+            <div class="stat-label" data-i18n="stats.saas">个 AI SaaS 已上线</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5</div>
+            <div class="stat-label" data-i18n="stats.demos">个 Live Demo</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label" data-i18n="card.features">核心领域</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI SAAS -->
+    <section class="category" data-cat="saas">
+      <div class="container">
+        <h2 class="category-title" data-i18n="sectionTitle.saas">🤖 AI SaaS · 企业服务</h2>
+        <div class="projects-grid" id="grid-saas"></div>
+      </div>
+    </section>
+
+    <!-- AI APPS -->
+    <section class="category" data-cat="app">
+      <div class="container">
+        <h2 class="category-title" data-i18n="sectionTitle.apps">📱 AI Apps · 面向用户</h2>
+        <div class="projects-grid" id="grid-app"></div>
+      </div>
+    </section>
+
+    <!-- AI TOOLS -->
+    <section class="category" data-cat="tool">
+      <div class="container">
+        <h2 class="category-title" data-i18n="sectionTitle.tools">🛠 AI 工具 · 开发者</h2>
+        <div class="projects-grid" id="grid-tool"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <h3 class="footer-title" data-i18n="footer.title">一起做点有意思的</h3>
+      <p class="footer-desc" data-i18n="footer.desc">如果你也在做 AI 产品，欢迎交流合作。</p>
+      <div class="footer-links">
+        <a href="https://github.com/iflykingc-oss" target="_blank" rel="noopener">GitHub</a>
+        <span>·</span>
+        <a href="mailto:i@iflykingc.com">Email</a>
+      </div>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 iflykingc · 用 AI 做产品</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

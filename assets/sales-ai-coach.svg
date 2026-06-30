@@ -1,0 +1,37 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f0a0a"/>
+      <stop offset="100%" stop-color="#3d0e0e"/>
+    </linearGradient>
+    <linearGradient id="accent5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <radialGradient id="glow5" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fb7185" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#fb7185" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg5)"/>
+  <circle cx="640" cy="200" r="220" fill="url(#glow5)"/>
+  <!-- target/dartboard -->
+  <g transform="translate(560,100)">
+    <circle cx="100" cy="125" r="100" fill="none" stroke="rgba(251,113,133,0.3)" stroke-width="2"/>
+    <circle cx="100" cy="125" r="70" fill="none" stroke="rgba(251,113,133,0.5)" stroke-width="2"/>
+    <circle cx="100" cy="125" r="40" fill="url(#accent5)"/>
+    <circle cx="100" cy="125" r="12" fill="#fff"/>
+  </g>
+  <g font-family="Inter, -apple-system, sans-serif">
+    <text x="60" y="80" font-size="14" font-weight="600" fill="#fb7185" letter-spacing="2">AI SAAS · SALES TRAINING</text>
+    <text x="60" y="160" font-size="56" font-weight="800" fill="#fff">Sales AI Coach</text>
+    <text x="60" y="200" font-size="20" fill="#cbd5e1">销冠教练 · AI 话术 · 智能陪练 · 自动复盘</text>
+    <text x="60" y="230" font-size="16" fill="#94a3b8">Sales Coach · Multi-Model · Practice & Review</text>
+  </g>
+  <g stroke="rgba(251,113,133,0.4)" stroke-width="1" fill="none">
+    <path d="M20,20 L40,20 M20,20 L20,40"/>
+    <path d="M780,20 L760,20 M780,20 L780,40"/>
+    <path d="M20,430 L40,430 M20,430 L20,410"/>
+    <path d="M780,430 L760,430 M780,430 L780,410"/>
+  </g>
+</svg>

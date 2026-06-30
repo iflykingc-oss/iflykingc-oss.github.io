@@ -1,0 +1,42 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1a0f"/>
+      <stop offset="100%" stop-color="#0e2e1a"/>
+    </linearGradient>
+    <linearGradient id="accent6" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a3e635"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <radialGradient id="glow6" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a3e635" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#a3e635" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg6)"/>
+  <circle cx="640" cy="200" r="220" fill="url(#glow6)"/>
+  <!-- radar circles + sweep -->
+  <g transform="translate(540,100)">
+    <circle cx="100" cy="125" r="100" fill="none" stroke="rgba(163,230,53,0.3)" stroke-width="1.5"/>
+    <circle cx="100" cy="125" r="70" fill="none" stroke="rgba(163,230,53,0.45)" stroke-width="1.5"/>
+    <circle cx="100" cy="125" r="40" fill="none" stroke="rgba(163,230,53,0.6)" stroke-width="1.5"/>
+    <line x1="100" y1="25" x2="100" y2="225" stroke="rgba(163,230,53,0.4)" stroke-width="1"/>
+    <line x1="0" y1="125" x2="200" y2="125" stroke="rgba(163,230,53,0.4)" stroke-width="1"/>
+    <line x1="29" y1="54" x2="171" y2="196" stroke="rgba(163,230,53,0.4)" stroke-width="1"/>
+    <line x1="29" y1="196" x2="171" y2="54" stroke="rgba(163,230,53,0.4)" stroke-width="1"/>
+    <path d="M100,125 L100,25 A100,100 0 0,1 171,54 Z" fill="url(#accent6)" opacity="0.5"/>
+    <circle cx="100" cy="125" r="5" fill="#a3e635"/>
+  </g>
+  <g font-family="Inter, -apple-system, sans-serif">
+    <text x="60" y="80" font-size="14" font-weight="600" fill="#a3e635" letter-spacing="2">AI APP · DISCOVERY</text>
+    <text x="60" y="160" font-size="56" font-weight="800" fill="#fff">AI Radar</text>
+    <text x="60" y="200" font-size="20" fill="#cbd5e1">AI 创业雷达 · 15 数据源 · 4D 验证系统</text>
+    <text x="60" y="230" font-size="16" fill="#94a3b8">Discover · Verify · Track AI Products</text>
+  </g>
+  <g stroke="rgba(163,230,53,0.4)" stroke-width="1" fill="none">
+    <path d="M20,20 L40,20 M20,20 L20,40"/>
+    <path d="M780,20 L760,20 M780,20 L780,40"/>
+    <path d="M20,430 L40,430 M20,430 L20,410"/>
+    <path d="M780,430 L760,430 M780,430 L780,410"/>
+  </g>
+</svg>

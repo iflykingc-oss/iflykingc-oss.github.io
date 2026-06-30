@@ -1,0 +1,40 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1024"/>
+      <stop offset="100%" stop-color="#1a1144"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="640" cy="120" r="240" fill="url(#glow)"/>
+  <!-- abstract chat bubble -->
+  <g transform="translate(500,80)">
+    <rect x="0" y="0" width="200" height="120" rx="24" fill="rgba(96,165,250,0.15)" stroke="url(#accent)" stroke-width="2"/>
+    <rect x="20" y="20" width="100" height="10" rx="5" fill="rgba(167,139,250,0.7)"/>
+    <rect x="20" y="40" width="140" height="8" rx="4" fill="rgba(255,255,255,0.25)"/>
+    <rect x="20" y="56" width="120" height="8" rx="4" fill="rgba(255,255,255,0.18)"/>
+    <circle cx="170" cy="80" r="14" fill="url(#accent)"/>
+  </g>
+  <!-- text -->
+  <g font-family="Inter, -apple-system, sans-serif">
+    <text x="60" y="80" font-size="14" font-weight="600" fill="#a78bfa" letter-spacing="2">AI SAAS · B2B</text>
+    <text x="60" y="160" font-size="56" font-weight="800" fill="#fff">BuddyJob</text>
+    <text x="60" y="200" font-size="20" fill="#cbd5e1">AI 求职平台 · 简历分析 · 模拟面试</text>
+    <text x="60" y="230" font-size="16" fill="#94a3b8">Southeast Asia Career Platform</text>
+  </g>
+  <!-- corner marks -->
+  <g stroke="rgba(167,139,250,0.4)" stroke-width="1" fill="none">
+    <path d="M20,20 L40,20 M20,20 L20,40"/>
+    <path d="M780,20 L760,20 M780,20 L780,40"/>
+    <path d="M20,430 L40,430 M20,430 L20,410"/>
+    <path d="M780,430 L760,430 M780,430 L780,410"/>
+  </g>
+</svg>
