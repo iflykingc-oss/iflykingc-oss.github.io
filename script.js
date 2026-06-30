@@ -10,6 +10,53 @@ function renderProjects(lang) {
   });
 }
 
+// ===== Render terminal log =====
+function renderTerminal(lang) {
+  const el = document.getElementById('terminal-body');
+  if (!el) return;
+  const lines = i18n[lang].about.log;
+  el.innerHTML = lines.map(raw => {
+    let cls = '';
+    if (raw.startsWith('$')) cls = 'cmd';
+    else if (raw.startsWith('✓')) cls = 'ok';
+    else if (raw.startsWith('→')) cls = 'arrow';
+    else if (raw.startsWith('!') || raw.startsWith('×')) cls = 'err';
+    return `<span class="${cls}">${escapeHTML(raw) || '&nbsp;'}</span>`;
+  }).join('\n');
+}
+
+// ===== Render decisions =====
+function renderDecisions(lang) {
+  const el = document.getElementById('decisions-grid');
+  if (!el) return;
+  const items = i18n[lang].decisions.items;
+  el.innerHTML = items.map(d => `
+    <article class="decision-card">
+      <div class="decision-vs">
+        <span class="decision-choice">${escapeHTML(d.choice)}</span>
+        <span class="decision-vs-mark">vs</span>
+        <span class="decision-rejected">${escapeHTML(d.rejected)}</span>
+      </div>
+      <p class="decision-reason">${escapeHTML(d.reason)}</p>
+    </article>
+  `).join('');
+}
+
+// ===== Render next list =====
+function renderNext(lang) {
+  const el = document.getElementById('next-list');
+  if (!el) return;
+  const items = i18n[lang].next.items;
+  el.innerHTML = items.map(t => `<li>${escapeHTML(t)}</li>`).join('');
+}
+
+// ===== Escape HTML for safe interpolation =====
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
 function cardHTML(p, lang) {
   const statusKey = 'status' + p.status.charAt(0).toUpperCase() + p.status.slice(1);
   const statusLabel = i18n[lang].card[statusKey];
@@ -84,6 +131,9 @@ function setLang(lang) {
   });
   applyI18n(lang);
   renderProjects(lang);
+  renderTerminal(lang);
+  renderDecisions(lang);
+  renderNext(lang);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

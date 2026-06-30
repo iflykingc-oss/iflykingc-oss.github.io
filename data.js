@@ -26,9 +26,63 @@ const i18n = {
       statusSunset: '已归档',
       updated: '更新于'
     },
+    about: {
+      title: '关于这个站点',
+      subtitle: '它不仅是个产品展示页，它本身就是一个 Vibe Coding 的产物。整个站点从空白到上线用了一个下午。',
+      stat1Num: '9', stat1Lab: '款已上线产品',
+      stat2Num: '1220', stat2Lab: '行源代码',
+      stat3Num: '6', stat3Lab: '个文件',
+      stat4Num: '0', stat4Lab: '个外部依赖',
+      stat5Num: '~30s', stat5Lab: '从 push 到上线',
+      stat6Num: '3', stat6Lab: '次迭代',
+      tool: '工具栈',
+      log: [
+        '$ claude-code',
+        '→ 读取 9 个仓库的 README + 主题，建立项目档案',
+        '→ 决定 3 大分类：Apps / SaaS / Tools',
+        '$ write index.html + styles.css + data.js',
+        '→ 用模板批量生成 9 张 SVG 项目封面（每张配色独立）',
+        '$ git push origin main',
+        '✓ GitHub Pages 构建成功 · 上线',
+        '',
+        '$ feedback from user: 有点丑，部分描述不准',
+        '→ 重写 styles.css：magazine 式 editorial 风格',
+        '→ 数据层修正：BuddyJob 从 SaaS 移到 Apps（它是 toC）',
+        '→ 翻 4 张弱 SVG 封面（销冠/命运图谱/aisclab/buddyjob）',
+        '$ git push redesign',
+        '✓ Pages rebuilt',
+        '',
+        '$ this session: 设计 → about / decisions / next 3 个板块',
+        '→ 把站点本身作为 Vibe Coding 案例展示',
+        '→ 站点即作品；作品即简历'
+      ]
+    },
+    decisions: {
+      title: 'Engineering decisions',
+      subtitle: '每个选择都对应一条被拒绝的替代方案。当下的判断、未来说不定会改。',
+      items: [
+        { choice: '静态 HTML', rejected: 'React / Next', reason: '单页内容无需路由；去掉构建链后失败模式更少、部署更快' },
+        { choice: 'SVG 矢量封面', rejected: '真实截图', reason: '一半仓库私有取不到截图；矢量在任何 DPI 下都更清晰' },
+        { choice: '暗色主题', rejected: '亮色 / 主题切换', reason: 'AI 圈默认审美；配色让项目色调更突出，省一行切换逻辑' },
+        { choice: 'JS 切换双语', rejected: '多页静态生成', reason: '单源数据，零成本切换；代价是首屏 0.3s 未翻译内容' },
+        { choice: 'GitHub Pages', rejected: 'Vercel / Netlify', reason: '已经在 GitHub 上、零配置、CDN 足够快；纯静态文件不需要 Serverless' }
+      ]
+    },
+    next: {
+      title: '再加 30 分钟会改什么',
+      subtitle: '诚实清单。做完这些就过 90 分线了。',
+      items: [
+        '把 OG image 从渐变占位换成品牌设计（产品矩阵网格 + 标题）',
+        '跑一遍 Lighthouse perf & a11y 审计（视觉判断 99+ 但没测过）',
+        '加 prefers-reduced-motion 媒体查询，遵守用户系统设置',
+        '每个项目加 "last updated" 日期显示（数据已有，渲染层缺）',
+        '写一份 README 把 Vibe Coding 流程沉淀成可复用的方法论'
+      ]
+    },
     footer: {
       title: '一起做点有意思的',
       desc: '如果你也在做 AI 产品，欢迎交流合作。',
+      source: '查看本站源码',
       copy: '© 2026 iflykingc · 用 AI 做产品'
     }
   },
@@ -58,9 +112,63 @@ const i18n = {
       statusSunset: 'Archived',
       updated: 'Updated'
     },
+    about: {
+      title: 'About this site',
+      subtitle: 'This page is itself a vibe-coding artifact — from empty repo to live, in one afternoon.',
+      stat1Num: '9', stat1Lab: 'shipping products',
+      stat2Num: '1,220', stat2Lab: 'lines of code',
+      stat3Num: '6', stat3Lab: 'files total',
+      stat4Num: '0', stat4Lab: 'dependencies',
+      stat5Num: '~30s', stat5Lab: 'push to live',
+      stat6Num: '3', stat6Lab: 'iterations',
+      tool: 'Tooling',
+      log: [
+        '$ claude-code',
+        '→ read 9 repo READMEs + topics, built a profile per project',
+        '→ bucketed into 3 categories: Apps / SaaS / Tools',
+        '$ write index.html + styles.css + data.js',
+        '→ generated 9 SVG covers from a custom template',
+        '$ git push origin main',
+        '✓ GitHub Pages built · live',
+        '',
+        '$ user feedback: ugly, wrong categorization',
+        '→ rewrite styles.css: editorial magazine style',
+        '→ fix data: BuddyJob was toC not SaaS',
+        '→ redraw 4 weak SVG covers (sales/LifeChart/aisclab/BuddyJob)',
+        '$ git push redesign',
+        '✓ Pages rebuilt',
+        '',
+        '$ this session: about + decisions + next sections',
+        '→ the site itself is the resume piece',
+        '→ resume artifact = site artifact'
+      ]
+    },
+    decisions: {
+      title: 'Engineering decisions',
+      subtitle: 'Every choice here had a rejected alternative. Today\'s judgment may flip tomorrow.',
+      items: [
+        { choice: 'Static HTML', rejected: 'React / Next', reason: 'Single page, no routing needed; cutting the build chain means fewer failure modes and faster deploys.' },
+        { choice: 'SVG vector covers', rejected: 'Real screenshots', reason: 'Half the repos are private — vectors stay sharp at any DPI and are explicitly designed.' },
+        { choice: 'Dark theme', rejected: 'Light / theme toggle', reason: 'Default AI aesthetic, easier on long reads, lets per-project accent colors do the talking.' },
+        { choice: 'JS-driven i18n', rejected: 'Multi-page static gen', reason: 'Single source of truth, zero-cost switching. Cost: 0.3s untranslated first paint.' },
+        { choice: 'GitHub Pages', rejected: 'Vercel / Netlify', reason: 'Already on GitHub, zero-config, fast CDN. Static files do not need Serverless.' }
+      ]
+    },
+    next: {
+      title: 'What I would change with another 30 minutes',
+      subtitle: 'Honest list. Knock these out and it crosses the 90-mark.',
+      items: [
+        'Replace OG placeholder with a real branded image (product matrix + headline)',
+        'Run a Lighthouse perf & a11y audit — visually feels like 99+ but unverified',
+        'Add a prefers-reduced-motion media query to respect user settings',
+        'Show "last updated" date on every card (data has it, render layer doesn\'t)',
+        'Write a README that turns this workflow into a reusable vibe-coding play'
+      ]
+    },
     footer: {
       title: "Let's build something interesting",
       desc: 'If you are working on AI products, let us talk.',
+      source: 'View source on GitHub',
       copy: '© 2026 iflykingc · Shipping AI products'
     }
   }
