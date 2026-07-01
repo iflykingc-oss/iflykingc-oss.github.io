@@ -42,25 +42,25 @@ const i18n = {
           tag: 'METHOD',
           title: 'Vibe Coding',
           hook: 'Karpathy 的定位软了，拐点是验证成本',
-          body: 'Karpathy 2025 年提的词定义在"写 prototype"——我觉得太软了。把它推到生产代码真正要回答的问题不是"能不能用"，是**验证成本和编写成本的拐点**：AI 提的方案你一眼能判断对错，vibe coding 赢；需要先读 5 个模块、拼出系统行为才能判断，vibe coding 输。我自己拐点大概在 codebase ~30 files、AI 抽象层跟我定的不一致时开始。过了这条线，"读 + 改"反而比"接受 + debug"更慢。'
+          body: 'Karpathy 2025 年提的词定义在"写 prototype"——我觉得太软了。把它推到生产代码真正要回答的问题不是"能不能用"，是**验证成本和编写成本的拐点**：AI 提的方案你一眼能判断对错，vibe coding 赢；需要先读 5 个模块、拼出系统行为才能判断，vibe coding 输。我自己拐点大概在 BuddyJob 这种 codebase：43 个 deps + Next 16 + 6 国语言 i18n + Supabase RLS 几套策略 + Stripe/PayPal——AI 抽象层开始跟我定的不一致时，"读 + 改"反而比"接受 + debug"更慢。'
         },
         {
           tag: 'ARCHITECTURE',
           title: 'Harness 思维',
           hook: 'Anthropic 漏了第 4 种失败模式',
-          body: 'Anthropic "Building Effective Agents" 列了三种失败模式（context poisoning / distraction / clash）是好分类，但**漏了第 4 种"state decay"——长对话里 agent 几轮前的关键决策被中途摘要挤掉、行为开始跑偏。** 我做客服 agent 时这个出现频率最高。**比 prompt 更能拉开差距的是工具粒度。** `send_email` 太粗；`send_email(to, subject, body, retry_count)` 显式失败语义才管用。工具质量 > prompt 质量，永远。'
+          body: 'Anthropic "Building Effective Agents" 列了三种失败模式（context poisoning / distraction / clash）是好分类，但**漏了第 4 种"state decay"——长对话里 agent 几轮前的关键决策被中途摘要挤掉、行为开始跑偏。** 做 AIkefu 时这个出现频率最高——它部署起来是 10 个独立 service（ab_testing / advanced / feishu_bot / integrated / model_config / operation / quality / rag …），客户对话横跨多个服务时状态最容易丢。**比 prompt 更能拉开差距的是工具粒度。** `send_email` 太粗；`send_email(to, subject, body, retry_count)` 显式失败语义才管用。工具质量 > prompt 质量，永远。'
         },
         {
           tag: 'PRACTICE',
           title: 'RAG ≠ embedding 模型',
           hook: '文档时代 RAG 撑不起 Agent 工作流',
-          body: 'Anthropic "Contextual Retrieval" 和 Greg Kamradt chunking 实验都来自**文档问答**场景。把它们直接搬到 agent 是常见但错的偷懒：文档 RAG 优化"找相似文字"，agent RAG 优化"找我现在该怎么做"。**同一个 KB 在 agent 里一个 turn 可能要 query N 次，每次按 state 重写查询——单次 retrieve 的架构根本撑不住。** 我看到大多数"AI 助手" hallucination 的根因就是这个：用文档时代的 RAG 跑 agent 时代的任务。'
+          body: 'Anthropic "Contextual Retrieval" 和 Greg Kamradt chunking 实验都来自**文档问答**场景。把它们直接搬到 agent 是常见但错的偷懒：文档 RAG 优化"找相似文字"，agent RAG 优化"找我现在该怎么做"。**同一个 KB 在 agent 里一个 turn 可能要 query N 次，每次按 state 重写查询——单次 retrieve 的架构根本撑不住。** VibeCoding OCR 用 VLM+OCR 双通道融合时，22 条 pytest 跑通看似稳，但实际生产里最大的 bug 不是切法粗，是 query 在多个 chunk 间来回挑不准。我看到大多数"AI 助手" hallucination 的根因就是这个：用文档时代的 RAG 跑 agent 时代的任务。'
         },
         {
           tag: 'MINDSET',
           title: 'Context Engineering',
           hook: 'Context 预算怎么花，才是真问题',
-          body: '"Context is a budget, not a buffet" 是好口号，但实操关键不在"加什么"，在**每轮怎么重新分配**——新一条用户消息吃预算；一次工具结果要更多预算；一条 RAG 结果挤掉最近的对话。我工作中的实操是**长期槽 vs 临时槽**：身份 / 任务 state / 最近 3 步动作放常驻槽（写入贵但保留便宜）；其余按需 RAG / 摘要 / 丢弃。**真正的判断题是：什么东西该升级到常驻、什么时候又该把它降级掉。**'
+          body: '"Context is a budget, not a buffet" 是好口号，但实操关键不在"加什么"，在**每轮怎么重新分配**——新一条用户消息吃预算；一次工具结果要更多预算；一条 RAG 结果挤掉最近的对话。我工作中的实操是**长期槽 vs 临时槽**：身份 / 任务 state / 最近 3 步动作放常驻槽（写入贵但保留便宜）；其余按需 RAG / 摘要 / 丢弃。SalesCoach 这类"加载 5 个 package（ai-service / api / chrome-extension / shared / web）"的多包 monorepo，context 工程的关键不是 prompt 多漂亮，是**每个包里 system prompt 留多少、共享模块塞多少的取舍**。**真正的判断题是：什么东西该升级到常驻、什么时候又该把它降级掉。**'
         }
       ]
     },
@@ -112,25 +112,25 @@ const i18n = {
           tag: 'METHOD',
           title: 'Vibe coding',
           hook: "Karpathy's framing is too soft; the real crossover is verification cost",
-          body: 'Karpathy\'s 2025 framing centers "writing prototypes". Pushed into production, the real question isn\'t "does it work" — it\'s the **verification cost vs writing cost** crossover. If you can judge AI\'s output at a glance, vibe coding wins. If you need five modules of context to judge it, vibe coding loses. In my own work the crossover sits around ~30 files and AI abstractions diverging from mine. Past that line, "read + edit" gets slower than "accept + debug later".'
+          body: 'Karpathy\'s 2025 framing centers "writing prototypes". Pushed into production, the real question isn\'t "does it work" — it\'s the **verification cost vs writing cost** crossover. If you can judge AI\'s output at a glance, vibe coding wins. If you need five modules of context to judge it, vibe coding loses. My own crossover point lands inside BuddyJob-shaped codebases: 43 deps + Next 16 + 6 locales + Supabase RLS + Stripe/PayPal — once AI abstractions start diverging from mine, "read + edit" gets slower than "accept + debug later".'
         },
         {
           tag: 'ARCHITECTURE',
           title: 'Harness first',
           hook: 'Anthropic missed a 4th failure mode',
-          body: 'Anthropic\'s "Building Effective Agents" lists three: context poisoning, distraction, clash — good taxonomy. **It misses a 4th: state decay** — long-running conversations where the agent quietly drops key decisions from earlier turns as the summary expands, behavior drifts. I see this most often in customer service agents. **What moves the needle more than prompts is tool granularity.** `send_email` is too coarse; `send_email(to, subject, body, retry_count)` with explicit failure semantics is what actually ships. Tool quality > prompt quality, always.'
+          body: 'Anthropic\'s "Building Effective Agents" lists three: context poisoning, distraction, clash — good taxonomy. **It misses a 4th: state decay** — long-running conversations where the agent quietly drops key decisions from earlier turns as the summary expands, behavior drifts. I hit this most in AIkefu — it deploys as 10 independent services (ab_testing / advanced / feishu_bot / integrated / model_config / operation / quality / rag / …); when a customer conversation spans multiple services, the state is what gets lost first. **What moves the needle more than prompts is tool granularity.** `send_email` is too coarse; `send_email(to, subject, body, retry_count)` with explicit failure semantics is what actually ships. Tool quality > prompt quality, always.'
         },
         {
           tag: 'PRACTICE',
-          title: 'Document-era RAG cannot carry agent workflows',
-          hook: "Document RAG optimizes find-similar-text; agent RAG needs find-what-to-do-next",
-          body: 'Anthropic\'s 2024 "Contextual Retrieval" and Greg Kamradt\'s chunking research both target **document-QA**. Carrying them straight into agent workflows is a common-but-wrong shortcut: document RAG optimizes "find similar text"; agent RAG optimizes "find what to do next". **The same KB in an agent often needs N queries per turn, each rewritten by current state — one-shot retrieve can\'t keep up.** I trace most "AI assistant" hallucinations back to this: document-era RAG running agent-era tasks.'
+          title: "It's not your embedding model — it's your chunks",
+          hook: 'Document-era RAG cannot carry agent workflows',
+          body: 'Anthropic\'s 2024 "Contextual Retrieval" and Greg Kamradt\'s chunking research both target **document-QA**. Carrying them straight into agent workflows is a common-but-wrong shortcut: document RAG optimizes "find similar text"; agent RAG optimizes "find what to do next". **The same KB in an agent often needs N queries per turn, each rewritten by current state — one-shot retrieve can\'t keep up.** In VibeCoding OCR I built VLM+OCR dual-channel fusion with 22 pytest cases passing — looks solid in tests, but the actual production bugs were not bad chunking: bad query rewriting between chunks. I trace most "AI assistant" hallucinations back to this: document-era RAG running agent-era tasks.'
         },
         {
           tag: 'MINDSET',
           title: 'Context engineering',
           hook: "It's not what to add — it's how to re-allocate every turn",
-          body: '"Context is a budget, not a buffet" is a fine slogan. The real skill is **re-allocating every turn**: each new user message eats budget, each tool result costs more, each retrieved chunk competes with recent dialogue. In my work I keep two tiers: **persistent slots** (user persona, task state, last few actions — expensive to write, cheap to keep) vs **contextual slots** (everything else, retrieved or summarized on demand). **The judgment call: when does something earn a persistent slot, when do you demote it?**'
+          body: '"Context is a budget, not a buffet" is a fine slogan. The real skill is **re-allocating every turn**: each new user message eats budget, each tool result costs more, each retrieved chunk competes with recent dialogue. In my work I keep two tiers: **persistent slots** (user persona, task state, last few actions — expensive to write, cheap to keep) vs **contextual slots** (everything else, retrieved or summarized on demand). **The judgment call: when does something earn a persistent slot, when do you demote it?** Real example: SalesCoach is a monorepo with 5 packages (ai-service / api / chrome-extension / shared / web) — context engineering there is not "write a great prompt", it\'s deciding what each package puts in its own system prompt vs what gets shared.'
         }
       ]
     },
@@ -307,19 +307,19 @@ const projects = [
   {
     id: 'aisclab',
     cover: 'assets/aisclab.svg',
-    category: 'tool',
-    status: 'sunset',
+    category: 'app',
+    status: 'active',
     private: false,
     accent: '#94a3b8',
-    name: { zh: 'aisclab 实验沙盒', en: 'aisclab' },
+    name: { zh: 'aisclab 素材管理', en: 'aisclab · Asset Manager' },
     tagline: {
-      zh: '空仓库 · 早期 AI 原型试验场（已归档，仅作历史占位）',
-      en: 'Empty repo · early AI prototype sandbox (archived, placeholder only)'
+      zh: 'AI 驱动的电商素材全生命周期管理 — 多端后台（Web + 小程序 + 云函数）',
+      en: 'AI-driven e-commerce asset lifecycle management — Web admin + Mini-program + Cloud functions'
     },
-    tech: ['—'],
+    tech: ['Vue 3', 'ElementPlus', 'UniApp', 'Tencent CloudBase', 'Playwright E2E'],
     features: {
-      zh: ['当前状态：仓库内无代码', '曾经用于：想法验证 · 概念原型 · 临时脚本', '已迁移至各正式项目（VibeCoding OCR / AI Radar …）', '保留占位 · 不再维护'],
-      en: ['Status: no code in repo', 'Originally used for: idea validation · POC · scratch scripts', 'Migrated to live projects (VibeCoding OCR / AI Radar …)', 'Kept as placeholder · no longer maintained']
+      zh: ['Web 运营后台（Vue 3 + ElementPlus）+ 微信小程序（UniApp）双端', '腾讯云 CloudBase 云函数做后端（零运维、自动扩缩）', 'Playwright E2E 测试全链路覆盖', 'P1/P2/P3 多阶段迭代 + AGENTS.md / CLAUDE.md 协助 AI 协作开发'],
+      en: ['Web admin (Vue 3 + ElementPlus) + WeChat mini-program (UniApp) dual-platform', 'Tencent CloudBase cloud functions for backend (zero ops, auto scaling)', 'Playwright E2E covering full workflows', 'P1/P2/P3 phased rollout + AGENTS.md / CLAUDE.md guiding AI-assisted dev']
     },
     demo: null,
     code: 'https://github.com/iflykingc-oss/aisclab'
