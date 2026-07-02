@@ -65,7 +65,8 @@ function renderAbout(lang) {
   const el = document.getElementById('about-body');
   if (!el) return;
   const paras = i18n[lang].about.paragraphs;
-  el.innerHTML = paras.map(p => `<p>${escapeHTML(p)}</p>`).join('');
+  // Trusted, author-controlled strings (contain intentional <a> mailto links) — no escape.
+  el.innerHTML = paras.map(p => `<p>${p}</p>`).join('');
 }
 
 // ===== Render "On AI" thinking cards =====
@@ -110,6 +111,25 @@ function applyI18n(lang) {
   });
 }
 
+// ===== Visit counter (PV via abacus.jasoncameron.dev, no signup) =====
+let visitCount = null;
+
+async function bumpVisits() {
+  try {
+    const r = await fetch('https://abacus.jasoncameron.dev/hit/iflykingc-oss.github.io/home');
+    const { value } = await r.json();
+    visitCount = value;
+    renderVisits(currentLang);
+  } catch (_) { /* silent — external counter down shouldn't break the page */ }
+}
+
+function renderVisits(lang) {
+  const el = document.getElementById('footer-visits');
+  if (!el || visitCount === null) return;
+  const tpl = getNestedI18n(lang, 'footer.visits') || '';
+  el.innerHTML = tpl.replace('{n}', visitCount.toLocaleString());
+}
+
 // ===== Language switcher =====
 let currentLang = localStorage.getItem('lang') || 'zh';
 
@@ -123,6 +143,7 @@ function setLang(lang) {
   renderProjects(lang);
   renderAbout(lang);
   renderThinking(lang);
+  renderVisits(lang);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -130,4 +151,5 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => setLang(btn.dataset.lang));
   });
   setLang(currentLang);
+  bumpVisits();
 });
