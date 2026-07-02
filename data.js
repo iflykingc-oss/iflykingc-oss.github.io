@@ -5,7 +5,7 @@ const i18n = {
     hero: {
       badge: 'INDEPENDENT AI BUILDER',
       title: '用 AI 做产品，让想法落地。',
-      subtitle: '我是 iflykingc，独立 AI 产品构建者。过去 6 个月里独立完成 9 款 AI 产品，覆盖求职、客服、销售、数据分析、创业雷达等多个真实场景。',
+      subtitle: '我是 Hardy，独立 AI 产品构建者。过去 6 个月里独立完成 9 款 AI 产品，覆盖求职、客服、销售、数据分析、创业雷达等多个真实场景。',
       cta1: 'GitHub',
       cta2: '联系合作'
     },
@@ -27,11 +27,11 @@ const i18n = {
       updated: '更新于'
     },
     about: {
-      title: '关于我',
+      title: '关于我 | Hardy',
       paragraphs: [
-        '我是 iflykingc，过去 6 个月独立完成了 9 个 AI 产品，每个都全栈：从架构、AI/RAG/Agent 工程、到前后端、再到上线运营。',
-        '我的偏好：用最少代码做最对的事。AI 当杠杆，判断当护栏。三类项目都做过——3 个商业 SaaS（含可私有化部署）、4 个用户 App、2 个开发者工具。',
-        '目前在新方向上探索：multi-agent harness、context engineering、面向海外市场的产品设计。'
+        '大厂复合背景。做过培训讲师、K12 线上班主任、智能客服运营体系搭建，后来专职深耕 RAG 类 AI 产品设计。这些角色让我同时看两侧——用户怎么被服务，系统怎么被搭起来。',
+        'AI 浪潮兴起后，全面拥抱 AI，用 vibe coding 拓展个人边界。从业务需求、架构设计、RAG 检索增强、Agent 工程、前后端到上线运营——每个项目都是自己一个人从头做到底，目前项目均已上线，正在持续打磨。',
+        '现阶段深耕：RAG 工程化 · Agent 智能体 · AI 应用商业化落地。如果你对 AI 也有兴趣，欢迎一起交流：<a href="mailto:iflykingc@gmail.com">iflykingc@gmail.com</a>'
       ]
     },
     thinking: {
@@ -67,6 +67,7 @@ const i18n = {
     footer: {
       title: '聊聊看',
       desc: '如果你也在做 AI 产品，欢迎交流。',
+      visits: '第 <strong>{n}</strong> 次相遇 · 感谢你路过这里',
       copy: '© 2026 iflykingc · Made with vibe + Claude Code'
     }
   },
@@ -75,7 +76,7 @@ const i18n = {
     hero: {
       badge: 'INDEPENDENT AI BUILDER',
       title: 'Build AI products that ship.',
-      subtitle: "I'm iflykingc — an independent AI product builder. In the past 6 months I've shipped 9 AI products across career platforms, customer service, sales coaching, analytics, and AI startup discovery.",
+      subtitle: "I'm Hardy — an independent AI product builder. In the past 6 months I've shipped 9 AI products across career platforms, customer service, sales coaching, analytics, and AI startup discovery.",
       cta1: 'GitHub',
       cta2: 'Get in touch'
     },
@@ -97,11 +98,11 @@ const i18n = {
       updated: 'Updated'
     },
     about: {
-      title: 'About',
+      title: 'About | Hardy',
       paragraphs: [
-        "I'm iflykingc. In the past 6 months I've independently shipped 9 AI products — each one full-stack from architecture to AI engineering to frontend to launch and ops.",
-        "My bias: minimum code that solves the problem, AI as leverage and engineer judgment as the guardrail. I've shipped 3 commercial SaaS (on-prem available), 4 consumer apps, and 2 developer tools.",
-        'Currently exploring multi-agent harness, context engineering, and product design for overseas markets.'
+        'Mixed background at big companies — training instructor, K12 online homeroom, customer-service ops, then RAG-focused AI product design. These roles put me on both sides at once: how users get served, and how the system underneath gets built.',
+        "Once the AI wave hit, I went all in — using vibe coding to push my own boundaries. Requirements, architecture, RAG, agent engineering, frontend, backend, launch, ops — every project is one-person all the way through. Everything is freshly launched and being polished.",
+        "Right now: RAG productization, agent engineering, AI commercialization. If you're into AI too, let's talk: <a href=\"mailto:iflykingc@gmail.com\">iflykingc@gmail.com</a>"
       ]
     },
     thinking: {
@@ -137,6 +138,7 @@ const i18n = {
     footer: {
       title: "Let's talk",
       desc: 'If you are working on AI products, reach out.',
+      visits: 'Visit <strong>#{n}</strong> · thanks for stopping by',
       copy: '© 2026 iflykingc · Made with vibe + Claude Code'
     }
   }
